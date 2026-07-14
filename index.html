@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ton — Peça sua maquininha e receba na hora</title>
+<meta name="description" content="Maquininha Ton: sem mensalidade, taxas a partir de 0,57% e dinheiro na conta em minutos. Peça a sua com desconto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0E2A26;
+    --bg-2: #123530;
+    --card: #163F39;
+    --paper: #F5F1E6;
+    --lime: #C8FF4D;
+    --lime-dim: #9FD93F;
+    --muted: #9FBDB6;
+    --line: rgba(245,241,230,0.14);
+    --radius: 18px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    letter-spacing:-0.02em;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  :focus-visible{outline:2px solid var(--lime); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- topo com fita de recibo ---------- */
+  .ticker-tape{
+    background:var(--bg-2);
+    border-bottom:1px dashed var(--line);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:9px 0;
+  }
+  .ticker-tape .track{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.04em;
+    color:var(--lime-dim);
+    animation: scroll-left 26s linear infinite;
+  }
+  @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .ticker-tape .track span{margin-right:36px;}
+
+  header.nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(14,42,38,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+    max-width:1120px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:9px;
+    font-family:'Space Grotesk'; font-weight:700; font-size:20px;
+  }
+  .logo .dot{width:11px; height:11px; border-radius:50%; background:var(--lime); box-shadow:0 0 12px var(--lime);}
+  nav.links{display:flex; gap:28px; font-size:14.5px; color:var(--muted);}
+  nav.links a:hover{color:var(--paper);}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--lime); color:#0E2A26;
+    font-family:'Space Grotesk'; font-weight:700; font-size:14.5px;
+    padding:12px 22px; border-radius:100px;
+    border:none; cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 0 0 0 rgba(200,255,77,0.5);
+  }
+  .btn:hover{transform:translateY(-2px); box-shadow:0 8px 22px -6px rgba(200,255,77,0.55);}
+  .btn.ghost{
+    background:transparent; color:var(--paper); border:1px solid var(--line);
+  }
+  .btn.ghost:hover{border-color:var(--lime); color:var(--lime);}
+  .btn.small{padding:9px 16px; font-size:13px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:76px 0 60px;
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:50px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--lime);
+    border:1px solid rgba(200,255,77,0.35); padding:6px 12px; border-radius:100px;
+    margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(34px, 4.6vw, 54px); line-height:1.04; margin-bottom:18px;}
+  .hero h1 em{font-style:normal; color:var(--lime);}
+  .hero p.lead{font-size:17.5px; color:var(--muted); max-width:480px; margin-bottom:30px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:26px;}
+  .hero-trust{display:flex; gap:22px; flex-wrap:wrap; font-size:13px; color:var(--muted);}
+  .hero-trust b{color:var(--paper); font-family:'Space Grotesk';}
+
+  /* machine mockup (SVG, original artwork — not a photo) */
+  .machine-stage{
+    position:relative; display:flex; justify-content:center; align-items:center;
+    min-height:420px;
+  }
+  .glow{
+    position:absolute; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(200,255,77,0.28), transparent 70%);
+    filter:blur(10px);
+  }
+  .device{
+    position:relative; width:220px;
+    animation: float 5s ease-in-out infinite;
+    cursor:pointer;
+  }
+  @keyframes float{ 0%,100%{transform:translateY(0px);} 50%{transform:translateY(-14px);} }
+  .device svg{width:100%; display:block; filter:drop-shadow(0 30px 40px rgba(0,0,0,0.45));}
+  .badge-float{
+    position:absolute; background:var(--paper); color:#0E2A26;
+    font-family:'IBM Plex Mono'; font-size:12px; font-weight:600;
+    padding:8px 12px; border-radius:10px; display:flex; align-items:center; gap:6px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.35);
+  }
+  .badge-float.b1{top:12%; left:2%; animation: bob 4s ease-in-out infinite;}
+  .badge-float.b2{bottom:16%; right:0%; animation: bob 4.5s ease-in-out infinite 1s;}
+  @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+  .badge-float .ok{color:#1c8a4c;}
+
+  /* ---------- trust bar ---------- */
+  .trustbar{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--bg-2);
+  }
+  .trustbar .wrap{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+    padding:26px 24px; text-align:center;
+  }
+  .trustbar .num{font-family:'Space Grotesk'; font-size:26px; color:var(--lime);}
+  .trustbar .label{font-size:12.5px; color:var(--muted); margin-top:2px;}
+
+  /* ---------- sections ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:600px; margin-bottom:48px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); margin-bottom:12px;}
+  .section-head p{color:var(--muted); font-size:15.5px;}
+
+  /* modelos */
+  .models-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:20px;
+  }
+  .model-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; display:flex; flex-direction:column; gap:14px;
+    cursor:pointer; text-align:left;
+    transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    position:relative; overflow:hidden;
+  }
+  .model-card:hover{transform:translateY(-6px); border-color:rgba(200,255,77,0.5); box-shadow:0 18px 34px -14px rgba(0,0,0,0.5);}
+  .model-card .tag{
+    position:absolute; top:16px; right:16px;
+    font-family:'IBM Plex Mono'; font-size:10.5px; background:var(--lime); color:#0E2A26;
+    padding:4px 9px; border-radius:100px; font-weight:600;
+  }
+  .model-thumb{
+    height:180px; border-radius:12px;
+    background:linear-gradient(150deg, #F5F1E6, #E7E1D2);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .model-thumb img{height:100%; width:100%; object-fit:contain; padding:10px;}
+  .model-card h3{font-size:19px;}
+  .model-card .price{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;}
+  .model-card .price .old{font-family:'IBM Plex Mono'; color:var(--muted); font-size:13px; text-decoration:line-through;}
+  .model-card .price .new{font-family:'IBM Plex Mono'; color:var(--lime); font-size:18px; font-weight:600;}
+  .model-card .desc{font-size:13.5px; color:var(--muted); flex-grow:1;}
+  .model-card .buy-row{
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'Space Grotesk'; font-weight:600; font-size:13.5px;
+    padding-top:10px; border-top:1px solid var(--line);
+  }
+  .model-card .buy-row .arrow{transition:transform .15s ease;}
+  .model-card:hover .buy-row .arrow{transform:translateX(4px);}
+
+  /* taxas / recibo */
+  .fees{
+    background:var(--paper); color:#0E2A26; border-radius:22px;
+    padding:38px; position:relative;
+    background-image:
+      radial-gradient(circle at 8px 8px, var(--bg) 4px, transparent 4.5px),
+      radial-gradient(circle at 8px 8px, var(--bg) 4px, transparent 4.5px);
+    background-position: top left, bottom left;
+    background-size: 100% 20px, 100% 20px;
+    background-repeat: repeat-x;
+  }
+  .fees-inner{padding:14px 4px 0;}
+  .fees h3{font-family:'IBM Plex Mono'; font-size:15px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:18px; border-bottom:1px dashed rgba(14,42,38,0.3); padding-bottom:14px;}
+  .fee-row{display:flex; justify-content:space-between; font-family:'IBM Plex Mono'; font-size:14.5px; padding:9px 0; border-bottom:1px dashed rgba(14,42,38,0.18);}
+  .fee-row b{font-weight:600;}
+  .fee-row.total{margin-top:6px; font-size:16px; border-bottom:none; padding-top:14px;}
+
+  /* como funciona */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .step{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:26px;
+  }
+  .step .n{font-family:'IBM Plex Mono'; color:var(--lime); font-size:13px; margin-bottom:14px;}
+  .step h3{font-size:18px; margin-bottom:8px;}
+  .step p{font-size:14px; color:var(--muted);}
+
+  /* depoimentos */
+  .testimonials{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  }
+  .testi{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:24px;
+    font-size:14.5px;
+  }
+  .testi .stars{color:var(--lime); font-size:14px; margin-bottom:12px; letter-spacing:2px;}
+  .testi .who{margin-top:16px; font-family:'Space Grotesk'; font-size:13.5px; color:var(--muted);}
+
+  /* faq */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; background:none; border:none; color:var(--paper);
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 4px; font-family:'Space Grotesk'; font-size:16px; cursor:pointer; text-align:left;
+  }
+  .faq-q .plus{font-family:'IBM Plex Mono'; color:var(--lime); font-size:18px; transition:transform .2s ease;}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0; overflow:hidden; transition:max-height .25s ease;
+    font-size:14.5px; color:var(--muted); padding:0 4px;
+  }
+  .faq-item.open .faq-a{padding-bottom:18px;}
+
+  /* CTA final */
+  .final-cta{
+    background:linear-gradient(135deg, #163F39, #0E2A26);
+    border:1px solid var(--line); border-radius:24px;
+    padding:56px 40px; text-align:center;
+  }
+  .final-cta h2{font-size:clamp(26px,3.6vw,38px); margin-bottom:14px;}
+  .final-cta p{color:var(--muted); max-width:480px; margin:0 auto 28px;}
+
+  footer{border-top:1px solid var(--line); padding:36px 0; font-size:13px; color:var(--muted);}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+
+  /* reveal */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width: 880px){
+    .hero{grid-template-columns:1fr; padding-top:44px;}
+    .trustbar .wrap{grid-template-columns:repeat(2,1fr);}
+    .steps, .testimonials{grid-template-columns:1fr;}
+    nav.links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker-tape" aria-hidden="true">
+  <div class="track">
+    <span>PIX GRÁTIS NA MAQUININHA</span><span>TAXAS A PARTIR DE 0,57%</span><span>SEM MENSALIDADE · SEM ALUGUEL</span><span>DINHEIRO NA CONTA EM MINUTOS</span><span>GARANTIA VITALÍCIA</span>
+    <span>PIX GRÁTIS NA MAQUININHA</span><span>TAXAS A PARTIR DE 0,57%</span><span>SEM MENSALIDADE · SEM ALUGUEL</span><span>DINHEIRO NA CONTA EM MINUTOS</span><span>GARANTIA VITALÍCIA</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>ton<span style="color:var(--lime)">.</span></div>
+    <nav class="links">
+      <a href="#modelos">Modelos</a>
+      <a href="#taxas">Taxas</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <button class="btn small buy-btn" data-model="geral">Pedir a minha</button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div>
+      <div class="eyebrow">● maquininhas ton — oferta do parceiro</div>
+      <h1>Venda mais. <br>Receba <em>na hora</em>. <br>Sem pagar mensalidade.</h1>
+      <p class="lead">A maquininha Ton é feita pra quem trabalha por conta própria: você compra uma vez, usa pra sempre, e paga só uma taxinha quando vende. Pix grátis, taxas a partir de 0,57% e garantia vitalícia.</p>
+      <div class="hero-ctas">
+        <button class="btn buy-btn" data-model="geral">Pedir com desconto →</button>
+        <a href="#modelos" class="btn ghost">Ver modelos</a>
+      </div>
+      <div class="hero-trust">
+        <div><b>+2 milhões</b> de clientes</div>
+        <div><b>9,1/10</b> no Reclame Aqui</div>
+        <div><b>Frete grátis</b> pra todo o Brasil</div>
+      </div>
+    </div>
+
+    <div class="machine-stage">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="badge-float b1" aria-hidden="true"><span class="ok">●</span> Pix aprovado</div>
+      <div class="badge-float b2" aria-hidden="true">R$ 128,90 recebido</div>
+      <div class="device buy-btn" data-model="geral" role="button" tabindex="0" aria-label="Pedir maquininha Ton">
+        <svg viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="6" width="180" height="308" rx="26" fill="#123530" stroke="#2C5C53" stroke-width="2"/>
+          <rect x="26" y="26" width="148" height="150" rx="12" fill="#0A1F1C"/>
+          <rect x="34" y="34" width="132" height="100" rx="6" fill="#0E2A26" stroke="#2C5C53"/>
+          <text x="46" y="60" fill="#C8FF4D" font-family="IBM Plex Mono, monospace" font-size="11">TOTAL</text>
+          <text x="46" y="86" fill="#F5F1E6" font-family="IBM Plex Mono, monospace" font-size="20" font-weight="600">R$ 89,90</text>
+          <rect x="46" y="98" width="88" height="20" rx="10" fill="#C8FF4D"/>
+          <text x="90" y="112" fill="#0E2A26" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700">APROVADO</text>
+          <circle cx="150" cy="146" r="8" fill="#1B4A43" stroke="#2C5C53"/>
+          <rect x="30" y="190" width="34" height="26" rx="6" fill="#1B4A43"/>
+          <rect x="70" y="190" width="34" height="26" rx="6" fill="#1B4A43"/>
+          <rect x="110" y="190" width="34" height="26" rx="6" fill="#1B4A43"/>
+          <rect x="150" y="190" width="20" height="26" rx="6" fill="#C8FF4D"/>
+          <rect x="30" y="224" width="34" height="26" rx="6" fill="#1B4A43"/>
+          <rect x="70" y="224" width="34" height="26" rx="6" fill="#1B4A43"/>
+          <rect x="110" y="224" width="34" height="26" rx="6" fill="#1B4A43"/>
+          <rect x="150" y="224" width="20" height="26" rx="6" fill="#1B4A43"/>
+          <rect x="30" y="258" width="140" height="26" rx="6" fill="#1B4A43"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="trustbar">
+    <div class="wrap">
+      <div><div class="num mono">0,57%</div><div class="label">taxa a partir de</div></div>
+      <div><div class="num mono">0%</div><div class="label">mensalidade</div></div>
+      <div><div class="num mono">1 dia</div><div class="label">útil pra receber</div></div>
+      <div><div class="num mono">∞</div><div class="label">garantia vitalícia</div></div>
+    </div>
+  </div>
+
+  <!-- MODELOS -->
+  <section id="modelos" class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">modelos</div>
+      <h2>Escolha a maquininha do seu jeito de vender</h2>
+      <p>Da mais em conta até a completa com tela touch. Clique na que combina com seu negócio.</p>
+    </div>
+
+    <div class="models-grid">
+
+      <div class="model-card reveal buy-btn" data-model="t1mega" role="button" tabindex="0">
+        <span class="tag">a mais barata</span>
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/incoming/ton/93a3d8e2-65ea-4c6c-a3eb-00fcc603b347/maquininha-t1-right.webp" alt="Maquininha Ton T1 Mega+" loading="lazy"></div>
+        <h3>T1 Ton Mega+</h3>
+        <div class="price"><span class="new">R$ 16,80</span></div>
+        <p class="desc">A porta de entrada da linha Ton. Compacta, leve, funciona junto com o celular — ideal pra quem está começando a vender com maquininha física.</p>
+        <div class="buy-row">Quero essa <span class="arrow">→</span></div>
+      </div>
+
+      <div class="model-card reveal buy-btn" data-model="t2mega" role="button" tabindex="0">
+        <span class="tag">sem depender de wi-fi</span>
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/7593d68c-85b3-4576-be4b-fe8824565778/maquininha-t2-right.png" alt="Maquininha Ton T2 Mega+" loading="lazy"></div>
+        <h3>T2 Ton Mega+</h3>
+        <div class="price"><span class="old">R$ 49,88</span><span class="new">R$ 42,40</span></div>
+        <p class="desc">Pra você não ficar sem sinal: tem chip próprio e funciona sozinha, em qualquer lugar. Ótima pra quem atende em domicílio ou vende na rua.</p>
+        <div class="buy-row">Quero essa <span class="arrow">→</span></div>
+      </div>
+
+      <div class="model-card reveal buy-btn" data-model="t3mega" role="button" tabindex="0">
+        <span class="tag">+ vendida</span>
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 Mega+" loading="lazy"></div>
+        <h3>T3 Ton Mega+</h3>
+        <div class="price"><span class="old">R$ 108,00</span><span class="new">R$ 91,80</span></div>
+        <p class="desc">A mais completa da linha clássica: imprime comprovante na hora. Perfeita pra quem tem balcão fixo ou faz entregas com pagamento na porta.</p>
+        <div class="buy-row">Quero essa <span class="arrow">→</span></div>
+      </div>
+
+      <div class="model-card reveal buy-btn" data-model="t3black" role="button" tabindex="0">
+        <span class="tag">a mais funcional</span>
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 Black" loading="lazy"></div>
+        <h3>T3 Ton Black</h3>
+        <div class="price"><span class="old">R$ 129,00</span><span class="new">R$ 109,65</span></div>
+        <p class="desc">Mesma robustez da T3, em uma versão com visual black. Impressora integrada, ótima autonomia e taxas do plano Ton Black.</p>
+        <div class="buy-row">Quero essa <span class="arrow">→</span></div>
+      </div>
+
+      <div class="model-card reveal buy-btn" data-model="t3smartmega" role="button" tabindex="0">
+        <span class="tag">tela touch</span>
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Mega+" loading="lazy"></div>
+        <h3>T3 Smart Ton Mega+</h3>
+        <div class="price"><span class="old">R$ 191,88</span><span class="new">R$ 163,10</span></div>
+        <p class="desc">Maquininha Android com tela grande e catálogo de produtos direto na tela, pra agilizar o caixa de quem já vende todo dia.</p>
+        <div class="buy-row">Quero essa <span class="arrow">→</span></div>
+      </div>
+
+      <div class="model-card reveal buy-btn" data-model="t3smartblack" role="button" tabindex="0">
+        <span class="tag">completa</span>
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Black" loading="lazy"></div>
+        <h3>T3 Smart Ton Black</h3>
+        <div class="price"><span class="old">R$ 189,00</span><span class="new">R$ 160,65</span></div>
+        <p class="desc">A mais completa de toda a linha: maquininha Android, tela grande e visual black. Pra quem quer o topo de linha Ton.</p>
+        <div class="buy-row">Quero essa <span class="arrow">→</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TAXAS -->
+  <section id="taxas" class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">taxas</div>
+      <h2>Sem letra miúda: você vê exatamente quanto recebe</h2>
+      <p>Exemplo de uma venda de R$ 100 no plano com as menores taxas. Pix é sempre gratuito.</p>
+    </div>
+    <div class="fees reveal">
+      <div class="fees-inner">
+        <h3>simulação · venda de R$ 100,00</h3>
+        <div class="fee-row"><span>Pix na maquininha</span><b>0,00% · você recebe R$ 100,00</b></div>
+        <div class="fee-row"><span>Débito</span><b>a partir de 0,57% · você recebe R$ 99,43</b></div>
+        <div class="fee-row"><span>Crédito à vista</span><b>a partir de 0,57% · você recebe R$ 99,43</b></div>
+        <div class="fee-row"><span>Crédito parcelado (2x a 6x)</span><b>a partir de 2,99%</b></div>
+        <div class="fee-row"><span>Crédito parcelado (7x a 18x)</span><b>a partir de 5,49%</b></div>
+        <div class="fee-row total"><span>Mensalidade / aluguel</span><b>R$ 0,00 — sempre</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona" class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">como funciona</div>
+      <h2>Do pedido à primeira venda em 3 passos</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="n">01</div>
+        <h3>Escolha e peça</h3>
+        <p>Selecione o modelo ideal pro seu negócio e finalize o pedido com frete grátis pra todo o Brasil.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">02</div>
+        <h3>Receba em casa</h3>
+        <p>Sua maquininha chega já configurada. Baixe o app Ton e ative em poucos minutos, sem burocracia.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">03</div>
+        <h3>Comece a vender</h3>
+        <p>Aceite Pix, débito e crédito na hora. O dinheiro cai na sua Conta Ton — sem esperar semanas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">quem já usa</div>
+      <h2>Autônomos e MEIs que trocaram pra Ton</h2>
+    </div>
+    <div class="testimonials">
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Parei de pagar aluguel de maquininha do banco. Hoje só pago a taxa quando vendo, e o dinheiro cai rapidinho."</p>
+        <div class="who">— vendedora autônoma</div>
+      </div>
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Uso o Pix na maquininha e não pago nada. Facilitou muito o caixa da minha barraca."</p>
+        <div class="who">— MEI, feira de artesanato</div>
+      </div>
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p>"A T3 Smart com catálogo agilizou muito o atendimento no balcão. Recomendo pra quem vende todo dia."</p>
+        <div class="who">— dono de lanchonete</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="duvidas" class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">dúvidas</div>
+      <h2>Antes de pedir a sua</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <button class="faq-q"><span>A maquininha Ton cobra mensalidade?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Não. Você compra o equipamento uma vez e usa por tempo indeterminado, sem aluguel nem mensalidade. Paga só a taxa sobre cada venda.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Preciso ter CNPJ pra usar?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Não. Você pode se cadastrar com CPF ou CNPJ, com as mesmas taxas. Só pra aceitar vale-alimentação e vale-refeição (Alelo, VR, etc.) é preciso ter CNPJ.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Quanto tempo leva pra receber o dinheiro?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>O Pix cai na hora. Débito e crédito à vista podem cair em 1 dia útil ou na hora, dependendo do prazo escolhido no app.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>E se a maquininha der defeito?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>A garantia é vitalícia contra defeito de fabricação. A troca é solicitada direto pelo app, sem custo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="wrap">
+    <div class="final-cta reveal">
+      <h2>Pronto pra parar de perder venda?</h2>
+      <p>Peça sua maquininha Ton agora com o link abaixo — frete grátis e configuração simples.</p>
+      <button class="btn buy-btn" data-model="geral">Pedir minha maquininha →</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>ton<span style="color:var(--lime)">.</span></div>
+    <div>Página de divulgação de parceiro independente. Não é o site oficial da Ton/Stone.</div>
+  </div>
+</footer>
+
+<script>
+  // ============================================================
+  // COLOQUE SEU LINK DE AFILIADO AQUI 👇
+  // Pode ser o mesmo link pra tudo, ou um link diferente por modelo
+  // (edite o objeto AFFILIATE_LINKS abaixo).
+  // ============================================================
+  const AFFILIATE_LINKS = {
+    geral:        "https://ton.com.br/checkout/cart/?productId=TONMEGA_TIER_D195&referrer=1D7B6207-2A41-4E2B-9CE4-E85C23CF39A2&userAnticipation=0&userTag=tonmega_tier&utm_medium=invite_share&utm_source=revendedor",
+    t1mega:       "https://ton.com.br/checkout/cart/?productId=TONMEGA_TIER_D150&referrer=1D7B6207-2A41-4E2B-9CE4-E85C23CF39A2&userAnticipation=0&userTag=tonmega_tier&utm_medium=invite_share&utm_source=revendedor",
+    t2mega:       "https://ton.com.br/checkout/cart/?productId=TONMEGA_TIER_D195&referrer=1D7B6207-2A41-4E2B-9CE4-E85C23CF39A2&userAnticipation=0&userTag=tonmega_tier&utm_medium=invite_share&utm_source=revendedor",
+    t3mega:       "https://ton.com.br/checkout/cart/?productId=TONMEGA_TIER_S920&referrer=1D7B6207-2A41-4E2B-9CE4-E85C23CF39A2&userAnticipation=0&userTag=tonmega_tier&utm_medium=invite_share&utm_source=revendedor",
+    t3black:      "https://ton.com.br/checkout/cart/?productId=TONBLACK_TIER_S920&referrer=1D7B6207-2A41-4E2B-9CE4-E85C23CF39A2&userAnticipation=0&userTag=tonblack_tier&utm_medium=invite_share&utm_source=revendedor",
+    t3smartmega:  "https://ton.com.br/checkout/cart/?productId=TONMEGA_TIER_SMART_POS&referrer=1D7B6207-2A41-4E2B-9CE4-E85C23CF39A2&userAnticipation=0&userTag=tonmega_tier&utm_medium=invite_share&utm_source=revendedor",
+    t3smartblack: "https://ton.com.br/checkout/cart/?productId=TONBLACK_TIER_SMART_POS&referrer=1D7B6207-2A41-4E2B-9CE4-E85C23CF39A2&userAnticipation=0&userTag=tonblack_tier&utm_medium=invite_share&utm_source=revendedor",
+  };
+
+  document.querySelectorAll('.buy-btn').forEach(el => {
+    el.addEventListener('click', () => {
+      const model = el.getAttribute('data-model') || 'geral';
+      const link = AFFILIATE_LINKS[model] || AFFILIATE_LINKS.geral;
+      window.open(link, '_blank', 'noopener');
+    });
+    el.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        el.click();
+      }
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
