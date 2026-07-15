@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ton — Peça sua maquininha e receba na hora</title>
-<meta name="description" content="Maquininha Ton: sem mensalidade, taxas a partir de 0,57% e dinheiro na conta em minutos. Peça a sua com desconto.">
+<title>Ton — Pare de perder dinheiro na taxa errada</title>
+<meta name="description" content="0,57% no débito. R$0 de mensalidade. Garantia vitalícia. Veja quanto você economiza e peça a sua com desconto.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0E2A26">
 
 <!-- Open Graph / redes sociais. Preencha "SEU-DOMINIO-AQUI" com a URL real da página antes de publicar. -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Ton — Peça sua maquininha e receba na hora">
-<meta property="og:description" content="Sem mensalidade, taxas a partir de 0,57% e dinheiro na conta em minutos. Peça a sua com desconto.">
+<meta property="og:title" content="Ton — Pare de perder dinheiro na taxa errada">
+<meta property="og:description" content="0,57% no débito. R$0 de mensalidade. Garantia vitalícia.">
 <meta property="og:url" content="https://SEU-DOMINIO-AQUI/">
 <meta property="og:image" content="https://SEU-DOMINIO-AQUI/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ton — Peça sua maquininha e receba na hora">
-<meta name="twitter:description" content="Sem mensalidade, taxas a partir de 0,57% e dinheiro na conta em minutos.">
+<meta name="twitter:title" content="Ton — Pare de perder dinheiro na taxa errada">
+<meta name="twitter:description" content="0,57% no débito. R$0 de mensalidade.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E2A26'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23C8FF4D'/%3E%3C/svg%3E">
 
@@ -30,11 +30,10 @@
   gtag('config', 'AW-18323310302');
 </script>
 <!--
-  Sobre o evento de conversão "Compra": o snippet original disparava em toda
-  visita a esta página, não numa compra real — isso infla os números no Google
-  Ads. Aqui disparamos um evento de CLIQUE no botão de compra (mede intenção,
-  não venda). Veja trackBuyClick() no final do arquivo. O evento de conversão
-  de verdade deve ficar na página de confirmação, depois do pagamento aprovado.
+  Sobre o evento de conversão "Compra": disparamos um evento de CLIQUE no
+  botão de compra (mede intenção, não venda). Veja trackBuyClick() no fim
+  do arquivo. O evento de conversão de verdade deve ficar na página de
+  confirmação, depois do pagamento aprovado.
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,716 +68,485 @@
   .mono{ font-family:'IBM Plex Mono', monospace; }
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
-  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 20px;}
   :focus-visible{outline:2px solid var(--lime); outline-offset:3px; border-radius:4px;}
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
   }
-  /* ---------- scroll progress ---------- */
-  .scroll-progress{
-    position:fixed; top:0; left:0; height:3px; width:0%;
-    background:linear-gradient(90deg, var(--lime), var(--lime-dim));
-    box-shadow:0 0 10px rgba(200,255,77,0.6);
-    z-index:70; transition:width .12s linear;
-  }
-  /* ---------- skip link ---------- */
   .skip-link{
     position:absolute; top:-48px; left:12px; z-index:100;
     background:var(--lime); color:#0E2A26; font-family:'Space Grotesk'; font-weight:700;
     padding:10px 16px; border-radius:10px; transition:top .15s ease;
   }
   .skip-link:focus{top:12px;}
-  /* ---------- topo com fita de recibo ---------- */
-  .ticker-tape{
-    background:var(--bg-2);
-    border-bottom:1px dashed var(--line);
-    overflow:hidden;
-    white-space:nowrap;
-    padding:9px 0;
-  }
-  .ticker-tape .track{
-    display:inline-block;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    letter-spacing:.04em;
-    color:var(--lime-dim);
-    animation: scroll-left 26s linear infinite;
-  }
-  @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-  .ticker-tape .track span{margin-right:36px;}
+  /* ---------- header enxuto: logo + 1 CTA, sem menu ---------- */
   header.nav{
     position:sticky; top:0; z-index:40;
-    background:rgba(14,42,38,0.88);
+    background:rgba(14,42,38,0.92);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
   .nav-inner{
-    position:relative;
     display:flex; align-items:center; justify-content:space-between;
-    padding:16px 24px;
-    max-width:1120px; margin:0 auto;
-    gap:16px;
+    padding:12px 20px; max-width:1120px; margin:0 auto; gap:12px;
   }
   .logo{
-    display:flex; align-items:center; gap:9px;
-    font-family:'Space Grotesk'; font-weight:700; font-size:20px;
+    display:flex; align-items:center; gap:8px;
+    font-family:'Space Grotesk'; font-weight:700; font-size:19px;
   }
-  .logo .dot{width:11px; height:11px; border-radius:50%; background:var(--lime); box-shadow:0 0 12px var(--lime); animation:dotpulse 2.2s ease-in-out infinite;}
+  .logo .dot{width:10px; height:10px; border-radius:50%; background:var(--lime); box-shadow:0 0 12px var(--lime); animation:dotpulse 2.2s ease-in-out infinite;}
   @keyframes dotpulse{0%,100%{box-shadow:0 0 8px var(--lime);} 50%{box-shadow:0 0 18px 4px var(--lime);}}
-  nav.links{display:flex; gap:28px; font-size:14.5px; color:var(--muted);}
-  nav.links a{padding:4px 0; position:relative;}
-  nav.links a:hover, nav.links a:focus-visible{color:var(--paper);}
-  nav.links a.active{color:var(--paper);}
-  nav.links a.active::after{content:"";position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--lime); border-radius:2px;}
-  .nav-right{display:flex; align-items:center; gap:10px;}
-  .nav-toggle{
-    display:none; align-items:center; justify-content:center;
-    background:transparent; border:1px solid var(--line); border-radius:10px;
-    width:38px; height:38px; color:var(--paper); cursor:pointer;
-  }
-  .nav-toggle svg{width:18px; height:18px;}
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
     background:var(--lime); color:#0E2A26;
     font-family:'Space Grotesk'; font-weight:700; font-size:14.5px;
-    padding:12px 22px; border-radius:100px;
-    border:none; cursor:pointer;
+    padding:12px 20px; border-radius:100px;
+    border:none; cursor:pointer; min-height:44px;
     transition:transform .15s ease, box-shadow .15s ease;
-    box-shadow:0 0 0 0 rgba(200,255,77,0.5);
-    position:relative; overflow:hidden;
   }
-  .btn::after{
-    content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
-    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
-    transform:skewX(-20deg); transition:left .5s ease;
-  }
-  .btn:hover::after{left:130%;}
   .btn:hover{transform:translateY(-2px); box-shadow:0 8px 22px -6px rgba(200,255,77,0.55);}
   .btn:active{transform:translateY(0); box-shadow:none;}
-  .btn.ghost{
-    background:transparent; color:var(--paper); border:1px solid var(--line);
-  }
-  .btn.ghost:hover{border-color:var(--lime); color:var(--lime);}
-  .btn.small{padding:9px 16px; font-size:13px;}
+  .btn.small{padding:9px 16px; font-size:13px; min-height:38px;}
+  .btn.block{width:100%;}
   .btn-pulse{animation:pulseGlow 2.6s ease-in-out infinite;}
   @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(200,255,77,0.45);} 50%{box-shadow:0 0 0 9px rgba(200,255,77,0);}}
   .visually-hidden{
     position:absolute; width:1px; height:1px; padding:0; margin:-1px;
     overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
   }
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative; overflow:visible;
-    padding:76px 0 60px;
-    display:grid; grid-template-columns:1.05fr 0.95fr; gap:50px; align-items:center;
-  }
-  .hero > *{position:relative; z-index:1;}
-  .hero-blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:.32; pointer-events:none; z-index:0;}
-  .hero-blob.b1{width:420px; height:420px; background:radial-gradient(circle, var(--lime), transparent 70%); top:-140px; left:-160px; animation:blobfloat 13s ease-in-out infinite;}
-  .hero-blob.b2{width:360px; height:360px; background:radial-gradient(circle, #2C5C53, transparent 70%); bottom:-160px; right:-120px; animation:blobfloat 16s ease-in-out infinite reverse;}
-  @keyframes blobfloat{0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(30px,-24px) scale(1.08);}}
+  /* ---------- hero: tudo visível sem rolar ---------- */
+  .hero{padding:28px 0 32px;}
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
-    font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--lime);
-    border:1px solid rgba(200,255,77,0.35); padding:6px 12px; border-radius:100px;
-    margin-bottom:20px;
+    font-family:'IBM Plex Mono'; font-size:12px; color:var(--lime);
+    border:1px solid rgba(200,255,77,0.35); padding:5px 11px; border-radius:100px;
+    margin-bottom:16px;
   }
-  .eyebrow .pulse-dot{display:inline-block; animation:dotfade 1.6s ease-in-out infinite;}
+  .pulse-dot{display:inline-block; animation:dotfade 1.6s ease-in-out infinite;}
   @keyframes dotfade{0%,100%{opacity:1;} 50%{opacity:.3;}}
-  .hero h1{font-size:clamp(34px, 4.6vw, 54px); line-height:1.04; margin-bottom:18px;}
+  .hero h1{font-size:clamp(28px, 8vw, 42px); line-height:1.08; margin-bottom:12px;}
   .hero h1 em{font-style:normal; color:var(--lime);}
-  .hero p.lead{font-size:17.5px; color:var(--muted); max-width:480px; margin-bottom:30px;}
-  .hero-ctas{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:10px;}
-  .hero-ctas .microcopy{width:100%; font-size:12.5px; color:var(--muted); margin-top:2px;}
-  .hero-trust{display:flex; gap:22px; flex-wrap:wrap; font-size:13px; color:var(--muted); margin-top:16px;}
-  .hero-trust b{color:var(--paper); font-family:'Space Grotesk';}
-  /* machine mockup (SVG, original artwork — not a photo) */
-  .machine-stage{
+  .hero p.lead{font-size:16px; color:var(--muted); max-width:460px; margin-bottom:22px;}
+  .hero-ctas{display:flex; flex-direction:column; align-items:flex-start; gap:10px;}
+  .risk-note{
+    display:flex; align-items:center; gap:6px;
+    font-size:12px; color:var(--muted);
+  }
+  .risk-note svg{width:13px; height:13px; flex:none; color:var(--lime);}
+  .hero-visual{
     position:relative; display:flex; justify-content:center; align-items:center;
-    min-height:420px; perspective:1000px;
+    min-height:220px; margin-top:28px;
   }
-  .glow{
-    position:absolute; width:340px; height:340px; border-radius:50%;
-    background:radial-gradient(circle, rgba(200,255,77,0.28), transparent 70%);
-    filter:blur(10px);
+  .device{width:150px; filter:drop-shadow(0 22px 30px rgba(0,0,0,0.4));}
+  .device-wrap{position:relative; display:block;}
+  @media (min-width:640px){
+    .hero-visual{min-height:260px;}
+    .device{width:180px;}
   }
-  .device-float{
-    animation: float 5s ease-in-out infinite;
+  /* ---------- faixa de estatísticas: oferta + prova social num só golpe ---------- */
+  .statbar{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg-2);}
+  .statbar .wrap{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; padding:20px; text-align:center;}
+  .statbar .num{font-family:'Space Grotesk'; font-size:22px; color:var(--lime); line-height:1.1;}
+  .statbar .label{font-size:11.5px; color:var(--muted); margin-top:2px;}
+  @media (min-width:640px){ .statbar .wrap{grid-template-columns:repeat(4,1fr);} .statbar .num{font-size:26px;} }
+  /* ---------- seções ---------- */
+  section{padding:44px 0;}
+  .section-head{margin-bottom:22px;}
+  .section-head h2{font-size:clamp(22px,6vw,30px); margin-bottom:6px;}
+  .section-head p{color:var(--muted); font-size:14.5px;}
+  /* ---------- benefícios rápidos ---------- */
+  .quick-benefits{list-style:none;}
+  .quick-benefits li{
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:15px; padding:11px 0; border-bottom:1px solid var(--line);
   }
-  @keyframes float{ 0%,100%{transform:translateY(0px);} 50%{transform:translateY(-14px);} }
-  .device{
-    position:relative; width:220px;
-    cursor:pointer;
-    background:none; border:none; padding:0; display:block;
-    transition:transform .15s ease;
-    transform-style:preserve-3d;
+  .quick-benefits li:last-child{border-bottom:none;}
+  .quick-benefits .ck{color:var(--lime); font-weight:700; flex:none;}
+  /* ---------- calculadora compacta ---------- */
+  .calc-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px;
   }
-  .device svg{width:100%; display:block; filter:drop-shadow(0 30px 40px rgba(0,0,0,0.45));}
-  .device:hover svg{filter:drop-shadow(0 34px 46px rgba(0,0,0,0.5));}
-  .badge-float{
-    position:absolute; background:var(--paper); color:#0E2A26;
-    font-family:'IBM Plex Mono'; font-size:12px; font-weight:600;
-    padding:8px 12px; border-radius:10px; display:flex; align-items:center; gap:6px;
-    box-shadow:0 10px 24px rgba(0,0,0,0.35);
-    pointer-events:none;
+  .calc-card label{display:block; font-family:'Space Grotesk'; font-weight:600; font-size:14.5px; margin-bottom:10px;}
+  .calc-input-row{
+    display:flex; align-items:center; gap:8px; background:var(--bg-2);
+    border:1px solid var(--line); border-radius:12px; padding:10px 14px; margin-bottom:18px;
   }
-  .badge-float.b1{top:12%; left:2%; animation: bob 4s ease-in-out infinite;}
-  .badge-float.b2{bottom:16%; right:0%; animation: bob 4.5s ease-in-out infinite 1s;}
-  @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
-  .badge-float .ok{color:#1c8a4c;}
-  /* ---------- trust bar ---------- */
-  .trustbar{
-    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    background:var(--bg-2);
+  .calc-input-row:focus-within{border-color:var(--lime);}
+  .calc-input-row .prefix{font-family:'IBM Plex Mono'; color:var(--muted); font-size:16px;}
+  .calc-input-row input{
+    flex:1; background:none; border:none; outline:none; color:var(--paper);
+    font-family:'IBM Plex Mono'; font-size:18px; font-weight:600; min-width:0;
   }
-  .trustbar .wrap{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
-    padding:26px 24px; text-align:center;
+  .calc-results{display:flex; flex-direction:column; gap:12px; margin-bottom:16px;}
+  .calc-row{display:grid; grid-template-columns:1fr auto; row-gap:6px; align-items:center; gap:10px; font-size:12.5px;}
+  .calc-row.ton .calc-label b{color:var(--lime);}
+  .calc-label{color:var(--muted);}
+  .calc-label b{color:var(--paper); font-family:'Space Grotesk';}
+  .calc-bar{grid-column:1/-1; height:7px; border-radius:100px; background:rgba(245,241,230,0.08); overflow:hidden;}
+  .calc-fill{height:100%; width:0%; border-radius:100px; background:var(--muted); transition:width .4s cubic-bezier(.2,.8,.2,1);}
+  .calc-row.ton .calc-fill{background:linear-gradient(90deg, var(--lime), var(--lime-dim));}
+  .calc-value{font-family:'IBM Plex Mono'; font-weight:600; text-align:right;}
+  .calc-savings{
+    font-family:'Space Grotesk'; font-size:15px; background:rgba(200,255,77,0.1);
+    border:1px solid rgba(200,255,77,0.3); border-radius:12px; padding:12px 16px;
   }
-  .trustbar .num{font-family:'Space Grotesk'; font-size:26px; color:var(--lime); transform:scale(.6); opacity:0; transition:transform .5s cubic-bezier(.2,1.4,.4,1), opacity .5s ease;}
-  .trustbar .num.in{transform:scale(1); opacity:1;}
-  .trustbar .wrap > div:nth-child(1) .num{transition-delay:0s;}
-  .trustbar .wrap > div:nth-child(2) .num{transition-delay:.08s;}
-  .trustbar .wrap > div:nth-child(3) .num{transition-delay:.16s;}
-  .trustbar .wrap > div:nth-child(4) .num{transition-delay:.24s;}
-  .trustbar .label{font-size:12.5px; color:var(--muted); margin-top:2px;}
-  /* ---------- sections ---------- */
-  section{padding:88px 0;}
-  .section-head{max-width:600px; margin-bottom:48px;}
-  .section-head .eyebrow{margin-bottom:14px;}
-  .section-head h2{font-size:clamp(26px,3.4vw,36px); margin-bottom:12px;}
-  .section-head p{color:var(--muted); font-size:15.5px;}
-  /* modelos */
-  .models-grid{
-    display:flex; flex-direction:column; gap:20px;
-    max-width:560px; margin:0 auto;
-    perspective:1200px;
+  .calc-savings b{color:var(--lime);}
+  .calc-foot{font-size:11px; color:var(--muted); margin-top:10px;}
+  /* ---------- modelos ---------- */
+  .quick-pick{
+    display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+    background:var(--card); border:1px solid rgba(200,255,77,0.35); border-radius:var(--radius);
+    padding:16px; margin-bottom:20px;
   }
+  .quick-pick .txt{font-size:14px;}
+  .quick-pick .txt b{font-family:'Space Grotesk'; display:block; font-size:15px;}
+  .models-grid{display:flex; flex-direction:column; gap:14px;}
   .model-card{
     background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-    padding:22px; display:flex; flex-direction:column; gap:14px;
+    padding:16px; display:flex; gap:14px; align-items:center;
     cursor:pointer; text-align:left; width:100%; font:inherit; color:inherit;
-    transition:border-color .18s ease, box-shadow .18s ease, transform .15s ease;
-    position:relative; overflow:hidden;
-    transform-style:preserve-3d;
+    position:relative;
   }
-  .model-card:hover{border-color:rgba(200,255,77,0.5); box-shadow:0 18px 34px -14px rgba(0,0,0,0.5);}
-  .model-card.featured{border-color:rgba(200,255,77,0.5); animation:pulseGlow 3s ease-in-out infinite;}
-  .model-card.featured .tag{background:var(--paper); box-shadow:0 0 16px rgba(200,255,77,0.55);}
-  .model-card .tag{
-    position:absolute; top:16px; right:16px;
-    font-family:'IBM Plex Mono'; font-size:10.5px; background:var(--lime); color:#0E2A26;
-    padding:4px 9px; border-radius:100px; font-weight:600;
-  }
+  .model-card.featured{border-color:rgba(200,255,77,0.5);}
   .model-thumb{
-    height:180px; border-radius:12px;
+    width:70px; height:70px; flex:none; border-radius:12px;
     background:linear-gradient(150deg, #F5F1E6, #E7E1D2);
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
-  .model-thumb svg{height:80%; width:auto; filter:drop-shadow(0 14px 18px rgba(0,0,0,0.18));}
-  .model-thumb img.thumb-photo{height:100%; width:100%; object-fit:contain; padding:16px; filter:drop-shadow(0 14px 18px rgba(0,0,0,0.18));}
-  .model-card h3{font-size:19px;}
-  .model-card .price{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;}
-  .model-card .price .old{font-family:'IBM Plex Mono'; color:var(--muted); font-size:13px; text-decoration:line-through;}
-  .model-card .price .new{font-family:'IBM Plex Mono'; color:var(--lime); font-size:18px; font-weight:600;}
-  .model-card .desc{font-size:13.5px; color:var(--muted); flex-grow:1;}
-  .model-card .buy-row{
-    display:flex; align-items:center; justify-content:space-between;
-    font-family:'Space Grotesk'; font-weight:600; font-size:13.5px;
-    padding-top:10px; border-top:1px solid var(--line);
+  .model-thumb img{height:100%; width:100%; object-fit:contain; padding:8px;}
+  .model-info{flex:1; min-width:0;}
+  .model-info .tag{
+    font-family:'IBM Plex Mono'; font-size:10px; color:var(--lime); display:block; margin-bottom:2px;
   }
-  .model-card .buy-row .arrow{transition:transform .15s ease;}
-  .model-card:hover .buy-row .arrow{transform:translateX(4px);}
-  /* taxas / recibo */
-  .fees-layout{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
-  .fees{
-    background:var(--paper); color:#0E2A26; border-radius:22px;
-    padding:38px; position:relative;
-    background-image:
-      radial-gradient(circle at 8px 8px, var(--bg) 4px, transparent 4.5px),
-      radial-gradient(circle at 8px 8px, var(--bg) 4px, transparent 4.5px);
-    background-position: top left, bottom left;
-    background-size: 100% 20px, 100% 20px;
-    background-repeat: repeat-x;
+  .model-info h3{font-size:16px; margin-bottom:2px;}
+  .model-info .desc{font-size:12.5px; color:var(--muted); margin-bottom:4px;}
+  .model-info .price{display:flex; align-items:baseline; gap:6px; flex-wrap:wrap;}
+  .model-info .old{font-family:'IBM Plex Mono'; color:var(--muted); font-size:11.5px; text-decoration:line-through;}
+  .model-info .new{font-family:'IBM Plex Mono'; color:var(--lime); font-size:16px; font-weight:600;}
+  .badge-off{
+    font-family:'IBM Plex Mono'; font-size:10px; font-weight:700; color:#0E2A26;
+    background:var(--lime); padding:1px 7px; border-radius:100px;
   }
-  .fees-inner{padding:14px 4px 0;}
-  .fees h3{font-family:'IBM Plex Mono'; font-size:15px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:18px; border-bottom:1px dashed rgba(14,42,38,0.3); padding-bottom:14px;}
-  .fee-row{display:flex; justify-content:space-between; gap:12px; font-family:'IBM Plex Mono'; font-size:14.5px; padding:9px 0; border-bottom:1px dashed rgba(14,42,38,0.18);}
-  .fee-row b{font-weight:600; text-align:right;}
-  .fee-row.total{margin-top:6px; font-size:16px; border-bottom:none; padding-top:14px;}
-  .fees-side{display:flex; flex-direction:column; gap:16px;}
-  .fees-side .fee-point{display:flex; gap:12px; align-items:flex-start;}
-  .fees-side .fee-point .ic{
-    flex:none; width:34px; height:34px; border-radius:10px; background:rgba(200,255,77,0.12);
-    color:var(--lime); display:flex; align-items:center; justify-content:center;
-    font-family:'IBM Plex Mono'; font-weight:600; font-size:14px;
+  .model-arrow{flex:none; color:var(--lime); font-size:18px;}
+  .fee-strip{display:flex; flex-wrap:wrap; gap:8px; margin:20px 0;}
+  .fee-strip span{
+    font-size:12.5px; background:rgba(200,255,77,0.08); border:1px solid rgba(200,255,77,0.22);
+    padding:6px 12px; border-radius:100px; color:var(--paper);
   }
-  .fees-side .fee-point h4{font-size:15px; margin-bottom:3px;}
-  .fees-side .fee-point p{font-size:13.5px; color:var(--muted);}
-  .fees-note{font-size:12.5px; color:var(--muted); margin-top:16px;}
-  /* como funciona */
-  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
-  .step{
-    background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:26px;
-    transition:transform .18s ease, border-color .18s ease;
+  .mini-steps{font-size:13px; color:var(--muted); text-align:center; margin-top:18px;}
+  .mini-steps b{color:var(--paper);}
+  /* ---------- quebra de objeções ---------- */
+  .objection-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .tcard{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:14px; text-align:center;
   }
-  .step:hover{transform:translateY(-4px); border-color:rgba(200,255,77,0.4);}
-  .step .n{font-family:'IBM Plex Mono'; color:var(--lime); font-size:13px; margin-bottom:14px;}
-  .step h3{font-size:18px; margin-bottom:8px;}
-  .step p{font-size:14px; color:var(--muted);}
-  /* faq */
+  .tcard .ic{font-size:20px; margin-bottom:6px; display:block;}
+  .tcard h3{font-size:13.5px; margin-bottom:3px;}
+  .tcard p{font-size:11.5px; color:var(--muted);}
+  @media (min-width:640px){ .objection-grid{grid-template-columns:repeat(4,1fr);} }
+  /* ---------- prova social ---------- */
+  .testi-grid{display:flex; flex-direction:column; gap:14px;}
+  .testi-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px;
+  }
+  .testi-stars{color:var(--lime); font-size:13px; letter-spacing:2px; margin-bottom:8px;}
+  .testi-card p.quote{font-size:14px; margin-bottom:8px;}
+  .testi-who{font-size:12.5px; color:var(--muted);}
+  .testi-who b{color:var(--paper); font-family:'Space Grotesk';}
+  .testi-foot{font-size:11px; color:var(--muted); margin-top:6px; opacity:.75;}
+  @media (min-width:700px){ .testi-grid{flex-direction:row;} .testi-card{flex:1;} }
+  /* ---------- faq ---------- */
   .faq-item{border-bottom:1px solid var(--line);}
   .faq-q{
     width:100%; background:none; border:none; color:var(--paper);
     display:flex; justify-content:space-between; align-items:center; gap:12px;
-    padding:20px 4px; font-family:'Space Grotesk'; font-size:16px; cursor:pointer; text-align:left;
+    padding:16px 2px; font-family:'Space Grotesk'; font-size:15px; cursor:pointer; text-align:left;
   }
-  .faq-q .plus{font-family:'IBM Plex Mono'; color:var(--lime); font-size:18px; transition:transform .2s ease; flex:none;}
+  .faq-q .plus{font-family:'IBM Plex Mono'; color:var(--lime); font-size:17px; transition:transform .2s ease; flex:none;}
   .faq-item.open .faq-q .plus{transform:rotate(45deg);}
-  .faq-a{
-    max-height:0; overflow:hidden; transition:max-height .25s ease;
-    font-size:14.5px; color:var(--muted); padding:0 4px;
-  }
-  .faq-item.open .faq-a{padding-bottom:18px;}
-  /* CTA final */
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease; font-size:14px; color:var(--muted); padding:0 2px;}
+  .faq-item.open .faq-a{padding-bottom:14px;}
+  /* ---------- CTA final ---------- */
   .final-cta{
     background:linear-gradient(135deg, #163F39, #0E2A26);
-    border:1px solid var(--line); border-radius:24px;
-    padding:56px 40px; text-align:center;
-    position:relative; overflow:hidden;
+    border:1px solid var(--line); border-radius:20px;
+    padding:36px 24px; text-align:center;
   }
-  .final-cta h2{font-size:clamp(26px,3.6vw,38px); margin-bottom:14px;}
-  .final-cta p{color:var(--muted); max-width:480px; margin:0 auto 28px;}
-  footer{border-top:1px solid var(--line); padding:28px 0; font-size:13px; color:var(--muted);}
-  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
-  footer .foot-links{display:flex; gap:18px; flex-wrap:wrap;}
-  footer .foot-links a:hover, footer .foot-links a:focus-visible{color:var(--paper);}
-  footer .disclaimer{width:100%; font-size:11px; color:var(--muted); opacity:.65; margin-top:10px;}
-  /* sticky buy bar */
+  .final-cta h2{font-size:clamp(22px,6vw,30px); margin-bottom:8px;}
+  .final-cta p{color:var(--muted); font-size:14.5px; margin-bottom:20px;}
+  footer{border-top:1px solid var(--line); padding:20px 0 84px; font-size:12px; color:var(--muted); text-align:center;}
+  footer .logo{justify-content:center; margin-bottom:8px;}
+  /* ---------- sticky CTA fixo — sempre visível ---------- */
   .sticky-buy{
-    position:fixed; left:50%; bottom:18px; transform:translate(-50%, 160%);
-    z-index:55; background:var(--card); border:1px solid var(--line); border-radius:100px;
-    padding:10px 10px 10px 20px; display:flex; align-items:center; gap:14px;
-    box-shadow:0 18px 40px -12px rgba(0,0,0,0.55);
-    transition:transform .35s cubic-bezier(.2,.8,.2,1);
-    max-width:calc(100% - 32px);
+    position:fixed; left:0; right:0; bottom:0; z-index:55;
+    background:var(--card); border-top:1px solid var(--line);
+    padding:10px 14px; padding-bottom:calc(10px + env(safe-area-inset-bottom));
+    display:flex; align-items:center; gap:10px;
+    box-shadow:0 -8px 24px -8px rgba(0,0,0,0.5);
+    transform:translateY(100%); transition:transform .3s ease;
   }
-  .sticky-buy.show{transform:translate(-50%,0);}
-  .sticky-buy .info{font-size:13px; color:var(--muted); display:flex; flex-direction:column; line-height:1.25; white-space:nowrap;}
-  .sticky-buy .info b{color:var(--paper); font-family:'Space Grotesk'; font-size:14px;}
-  .sticky-buy .close{background:none; border:none; color:var(--muted); cursor:pointer; padding:6px; font-size:16px; line-height:1;}
-  .sticky-buy .close:hover{color:var(--paper);}
-  @media (max-width:520px){ .sticky-buy .info{display:none;} .sticky-buy{padding:10px;} }
-  /* micro toast + confetti (JS-injected) */
-  .micro-toast{
-    position:fixed; z-index:80; background:var(--paper); color:#0E2A26;
-    font-family:'Space Grotesk'; font-weight:600; font-size:12.5px;
-    padding:8px 14px; border-radius:100px; box-shadow:0 10px 24px rgba(0,0,0,0.35);
-    pointer-events:none; opacity:0; transform:translate(-50%,-6px) scale(.9);
-    transition:opacity .25s ease, transform .25s ease;
-  }
-  .micro-toast.show{opacity:1; transform:translate(-50%,-16px) scale(1);}
-  .confetti-particle{position:fixed; z-index:80; width:6px; height:6px; border-radius:2px; pointer-events:none;}
-  /* toque (mobile): feedback de "pressionado" já que não existe hover */
-  .model-card.pressed{transform:scale(.97); border-color:rgba(200,255,77,0.5);}
-  .btn.pressed{transform:scale(.96);}
-  /* reveal */
-  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
-  @media (max-width: 880px){
-    .hero{grid-template-columns:1fr; padding-top:44px;}
-    .trustbar .wrap{grid-template-columns:repeat(2,1fr);}
-    .steps{grid-template-columns:1fr;}
-    .fees-layout{grid-template-columns:1fr;}
-    .nav-toggle{display:flex;}
-    nav.links{
-      display:flex; flex-direction:column; gap:0;
-      position:absolute; top:100%; left:0; right:0;
-      background:var(--bg-2); border-bottom:1px solid var(--line);
-      max-height:0; overflow:hidden; transition:max-height .25s ease;
-    }
-    nav.links.open{max-height:280px;}
-    nav.links a{padding:14px 24px; border-top:1px solid var(--line);}
-    nav.links a.active::after{display:none;}
-  }
-  @media (max-width: 640px){
-    .models-grid{max-width:100%;}
-  }
-  /* celular fica em coluna única (acima); a partir daqui, layout mais "da hora" */
-  @media (min-width:641px) and (max-width:999px){
-    .models-grid{
-      display:grid; grid-template-columns:repeat(2,1fr); gap:20px;
-      max-width:820px; margin:0 auto; grid-auto-flow:dense;
-    }
-    .model-card.featured{grid-column:span 2;}
-    .model-card.featured .model-thumb{height:220px;}
-  }
-  @media (min-width:1000px){
-    .models-grid{
-      display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
-      max-width:none; margin:0; grid-auto-flow:dense; align-items:start;
-    }
-    .model-card.featured{grid-column:span 2;}
-    .model-card.featured .model-thumb{height:260px;}
-    .model-card.featured h3{font-size:22px;}
-    .model-card.featured .price .new{font-size:21px;}
+  .sticky-buy.show{transform:translateY(0);}
+  .sticky-buy .info{font-size:12px; color:var(--muted); flex:1; min-width:0; line-height:1.25;}
+  .sticky-buy .info b{color:var(--paper); font-family:'Space Grotesk'; font-size:13.5px; display:block;}
+  @media (max-width:380px){ .sticky-buy .info{display:none;} }
+  .reveal{ } /* sem animação de scroll: conteúdo sempre visível, sem risco de ficar oculto se o JS falhar */
+  @media (min-width:880px){
+    .hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;}
+    .hero-visual{margin-top:0;}
   }
 </style>
 </head>
 <body>
-<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
-<div class="ticker-tape" aria-hidden="true">
-  <div class="track">
-    <span>PIX GRÁTIS NA MAQUININHA</span><span>TAXAS A PARTIR DE 0,57%</span><span>SEM MENSALIDADE · SEM ALUGUEL</span><span>DINHEIRO NA CONTA EM MINUTOS</span><span>GARANTIA VITALÍCIA</span>
-    <span>PIX GRÁTIS NA MAQUININHA</span><span>TAXAS A PARTIR DE 0,57%</span><span>SEM MENSALIDADE · SEM ALUGUEL</span><span>DINHEIRO NA CONTA EM MINUTOS</span><span>GARANTIA VITALÍCIA</span>
-  </div>
-</div>
 <header class="nav">
   <div class="nav-inner">
     <div class="logo"><span class="dot"></span>ton<span style="color:var(--lime)">.</span></div>
-    <nav class="links" id="nav-links">
-      <a href="#modelos">Modelos</a>
-      <a href="#taxas">Taxas</a>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#duvidas">Dúvidas</a>
-    </nav>
-    <div class="nav-right">
-      <button class="btn small buy-btn" data-model="geral">Pedir a minha<span class="visually-hidden"> — abre em nova guia</span></button>
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-    </div>
+    <button class="btn small buy-btn" data-model="geral">Quero pagar menos<span class="visually-hidden"> — abre em nova guia</span></button>
   </div>
 </header>
 <main id="main-content" tabindex="-1">
-  <!-- HERO -->
-  <section class="hero wrap">
-    <div class="hero-blob b1" aria-hidden="true"></div>
-    <div class="hero-blob b2" aria-hidden="true"></div>
-    <div>
-      <div class="eyebrow"><span class="pulse-dot" aria-hidden="true">●</span> maquininhas ton — oferta do parceiro</div>
-      <h1>Venda mais. <br>Receba <em>na hora</em>. <br>Sem pagar mensalidade.</h1>
-      <p class="lead">A maquininha Ton é feita pra quem trabalha por conta própria: você compra uma vez, usa pra sempre, e paga só uma taxinha quando vende. Pix grátis, taxas a partir de 0,57% e garantia vitalícia.</p>
-      <div class="hero-ctas">
-        <button class="btn btn-pulse buy-btn" data-model="geral">Pedir com desconto →<span class="visually-hidden"> — abre em nova guia</span></button>
-        <a href="#modelos" class="btn ghost">Ver modelos</a>
-        <span class="microcopy">Leva menos de 2 minutos · o pagamento é feito direto no app oficial da Ton</span>
+
+  <!-- 1. HEADLINE + SUBHEADLINE + CTA (tudo acima da dobra) -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow"><span class="pulse-dot" aria-hidden="true">●</span> parceiro autorizado Ton</div>
+        <h1>Você pode estar perdendo dinheiro na taxa errada</h1>
+        <p class="lead"><b>0,57%</b> no débito. <b>R$0</b> de mensalidade. Compra 100% no site oficial da Ton.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-pulse block buy-btn" data-model="geral">Quero pagar menos taxas →<span class="visually-hidden"> — abre em nova guia</span></button>
+          <span class="risk-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Garantia vitalícia · sem multa de cancelamento</span>
+        </div>
       </div>
-      <div class="hero-trust">
-        <div><b>+2 milhões</b> de clientes</div>
-        <div><b>Frete grátis</b> pra todo o Brasil</div>
-      </div>
-    </div>
-    <div class="machine-stage">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="badge-float b1" aria-hidden="true"><span class="ok">●</span> Pix aprovado</div>
-      <div class="badge-float b2" aria-hidden="true">R$ 128,90 recebido</div>
-      <div class="device-float">
-        <button class="device buy-btn" id="hero-device" data-model="geral" aria-label="Pedir maquininha Ton — abre em nova guia">
-          <svg viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="10" y="6" width="180" height="308" rx="26" fill="#123530" stroke="#2C5C53" stroke-width="2"/>
-            <rect x="26" y="26" width="148" height="150" rx="12" fill="#0A1F1C"/>
-            <rect x="34" y="34" width="132" height="100" rx="6" fill="#0E2A26" stroke="#2C5C53"/>
-            <text x="46" y="60" fill="#C8FF4D" font-family="IBM Plex Mono, monospace" font-size="11">TOTAL</text>
-            <text x="46" y="86" fill="#F5F1E6" font-family="IBM Plex Mono, monospace" font-size="20" font-weight="600">R$ 89,90</text>
-            <rect x="46" y="98" width="88" height="20" rx="10" fill="#C8FF4D"/>
-            <text x="90" y="112" fill="#0E2A26" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="10" font-weight="700">APROVADO</text>
-            <circle cx="150" cy="146" r="8" fill="#1B4A43" stroke="#2C5C53"/>
-            <rect x="30" y="190" width="34" height="26" rx="6" fill="#1B4A43"/>
-            <rect x="70" y="190" width="34" height="26" rx="6" fill="#1B4A43"/>
-            <rect x="110" y="190" width="34" height="26" rx="6" fill="#1B4A43"/>
-            <rect x="150" y="190" width="20" height="26" rx="6" fill="#C8FF4D"/>
-            <rect x="30" y="224" width="34" height="26" rx="6" fill="#1B4A43"/>
-            <rect x="70" y="224" width="34" height="26" rx="6" fill="#1B4A43"/>
-            <rect x="110" y="224" width="34" height="26" rx="6" fill="#1B4A43"/>
-            <rect x="150" y="224" width="20" height="26" rx="6" fill="#1B4A43"/>
-            <rect x="30" y="258" width="140" height="26" rx="6" fill="#1B4A43"/>
-          </svg>
+      <div class="hero-visual">
+        <button class="device-wrap buy-btn" data-model="geral" aria-label="Pedir maquininha Ton T3 Smart Ton Black — abre em nova guia" style="background:none;border:none;padding:0;cursor:pointer;">
+          <img class="device" src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Ton Black" loading="lazy" onerror="this.style.display='none'">
         </button>
       </div>
     </div>
   </section>
-  <div class="trustbar">
+
+  <!-- 2. PROVA SOCIAL + OFERTA, num só golpe de olho -->
+  <div class="statbar">
     <div class="wrap">
-      <div><div class="num mono reveal">0,57%</div><div class="label">taxa a partir de</div></div>
-      <div><div class="num mono reveal">0%</div><div class="label">mensalidade</div></div>
-      <div><div class="num mono reveal">1 dia</div><div class="label">útil pra receber</div></div>
-      <div><div class="num mono reveal">∞</div><div class="label">garantia vitalícia</div></div>
+      <div><div class="num mono">0,57%</div><div class="label">taxa a partir de</div></div>
+      <div><div class="num mono">R$ 0</div><div class="label">mensalidade</div></div>
+      <div><div class="num mono">+2 milhões</div><div class="label">clientes</div></div>
+      <div><div class="num mono">∞</div><div class="label">garantia vitalícia</div></div>
     </div>
   </div>
-  <!-- MODELOS -->
-  <section id="modelos" class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">modelos</div>
-      <h2>Escolha a maquininha do seu jeito de vender</h2>
-      <p>Da mais em conta até a completa com tela touch. Clique na que combina com seu negócio.</p>
+
+  <!-- 3. BENEFÍCIOS RÁPIDOS -->
+  <section class="wrap">
+    <ul class="quick-benefits">
+      <li><span class="ck" aria-hidden="true">✓</span> Dinheiro na hora (Pix e débito)</li>
+      <li><span class="ck" aria-hidden="true">✓</span> R$0 de mensalidade, pra sempre</li>
+      <li><span class="ck" aria-hidden="true">✓</span> Frete grátis pra todo o Brasil</li>
+      <li><span class="ck" aria-hidden="true">✓</span> Garantia vitalícia contra defeito</li>
+    </ul>
+  </section>
+
+  <!-- calculadora compacta: já mostra o resultado sem precisar digitar nada -->
+  <section class="wrap" style="padding-top:0;">
+    <div class="section-head">
+      <h2>Veja quanto você economiza</h2>
+    </div>
+    <div class="calc-card">
+      <label for="calc-input">Quanto você vende por mês no débito?</label>
+      <div class="calc-input-row">
+        <span class="prefix" aria-hidden="true">R$</span>
+        <input type="text" inputmode="numeric" id="calc-input" aria-label="Valor de vendas mensais no débito, em reais" value="5.000">
+      </div>
+      <div class="calc-results" id="calc-results">
+        <div class="calc-row ton">
+          <span class="calc-label">Ton <b>0,57%</b></span>
+          <span class="calc-value" id="calc-val-ton">R$ 0</span>
+          <div class="calc-bar"><div class="calc-fill" id="calc-fill-ton"></div></div>
+        </div>
+        <div class="calc-row">
+          <span class="calc-label">Mercado Pago <b>0,74%</b></span>
+          <span class="calc-value" id="calc-val-mp">R$ 0</span>
+          <div class="calc-bar"><div class="calc-fill" id="calc-fill-mp"></div></div>
+        </div>
+        <div class="calc-row">
+          <span class="calc-label">SumUp <b>0,80%</b></span>
+          <span class="calc-value" id="calc-val-su">R$ 0</span>
+          <div class="calc-bar"><div class="calc-fill" id="calc-fill-su"></div></div>
+        </div>
+        <div class="calc-row">
+          <span class="calc-label">PagBank <b>1,99%</b></span>
+          <span class="calc-value" id="calc-val-pb">R$ 0</span>
+          <div class="calc-bar"><div class="calc-fill" id="calc-fill-pb"></div></div>
+        </div>
+      </div>
+      <p class="calc-savings" id="calc-savings">Isso é <b>R$ 0</b> a menos por mês do que no PagBank.</p>
+    </div>
+  </section>
+
+  <!-- 4. PRODUTO -->
+  <section class="wrap" style="padding-top:0;">
+    <div class="section-head">
+      <h2>Escolha sua maquininha</h2>
+      <p>Até 15% off já aplicado. Sem cupom.</p>
+    </div>
+    <div class="quick-pick">
+      <div class="txt"><b>Sem tempo de comparar?</b>T3 Ton Mega+ é a mais vendida.</div>
+      <button class="btn small buy-btn" data-model="t3mega">Quero essa →<span class="visually-hidden"> — abre em nova guia</span></button>
     </div>
     <div class="models-grid">
-      <button class="model-card reveal buy-btn tilt" data-model="t1mega" aria-label="Pedir T1 Ton Mega+ por R$ 16,80 — abre em nova guia">
-        <span class="tag">a mais barata</span>
-        <div class="model-thumb">
-          <img class="thumb-photo" src="https://martech-web-cdn.stone.com.br/incoming/ton/93a3d8e2-65ea-4c6c-a3eb-00fcc603b347/maquininha-t1-right.webp" alt="Maquininha Ton T1 Mega+" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <svg viewBox="0 0 120 190" aria-hidden="true" style="display:none">
-            <rect x="14" y="8" width="92" height="174" rx="20" fill="#123530" stroke="#2C5C53" stroke-width="2"/>
-            <rect x="26" y="24" width="68" height="46" rx="8" fill="#0E2A26" stroke="#2C5C53"/>
-            <text x="34" y="42" fill="#9FBDB6" font-family="IBM Plex Mono, monospace" font-size="8">TOTAL</text>
-            <text x="34" y="60" fill="#F5F1E6" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="600">R$ 16,80</text>
-            <g fill="#1B4A43">
-              <rect x="26" y="82" width="18" height="16" rx="4"/><rect x="50" y="82" width="18" height="16" rx="4"/><rect x="74" y="82" width="18" height="16" rx="4"/>
-              <rect x="26" y="104" width="18" height="16" rx="4"/><rect x="50" y="104" width="18" height="16" rx="4"/><rect x="74" y="104" width="18" height="16" rx="4"/>
-              <rect x="26" y="126" width="18" height="16" rx="4"/><rect x="50" y="126" width="18" height="16" rx="4"/>
-            </g>
-            <rect x="74" y="126" width="18" height="16" rx="4" fill="#C8FF4D"/>
-            <rect x="26" y="150" width="66" height="14" rx="6" fill="#1B4A43"/>
-            <text x="60" y="176" text-anchor="middle" fill="#9FD93F" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="1">MEGA+</text>
-          </svg>
+      <button class="model-card buy-btn" data-model="t1mega" aria-label="Pedir T1 Ton Mega+ por R$ 16,80 — abre em nova guia">
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/incoming/ton/93a3d8e2-65ea-4c6c-a3eb-00fcc603b347/maquininha-t1-right.webp" alt="Maquininha Ton T1 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="model-info">
+          <span class="tag">a mais barata</span>
+          <h3>T1 Ton Mega+</h3>
+          <p class="desc">A mais barata da linha. Ideal pra começar.</p>
+          <div class="price"><span class="new">R$ 16,80</span></div>
         </div>
-        <h3>T1 Ton Mega+</h3>
-        <div class="price"><span class="new">R$ 16,80</span></div>
-        <p class="desc">A porta de entrada da linha Ton. Compacta, leve, funciona junto com o celular — ideal pra quem está começando a vender com maquininha física.</p>
-        <div class="buy-row">Quero essa <span class="arrow" aria-hidden="true">→</span></div>
+        <span class="model-arrow" aria-hidden="true">→</span>
       </button>
-      <button class="model-card reveal buy-btn tilt" data-model="t2mega" aria-label="Pedir T2 Ton Mega+ por R$ 42,40 — abre em nova guia">
-        <span class="tag">sem depender de wi-fi</span>
-        <div class="model-thumb">
-          <img class="thumb-photo" src="https://martech-web-cdn.stone.com.br/optimized/ton/7593d68c-85b3-4576-be4b-fe8824565778/maquininha-t2-right.png" alt="Maquininha Ton T2 Mega+" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <svg viewBox="0 0 120 190" aria-hidden="true" style="display:none">
-            <rect x="14" y="8" width="92" height="174" rx="20" fill="#123530" stroke="#2C5C53" stroke-width="2"/>
-            <rect x="54" y="1" width="12" height="10" rx="3" fill="#2C5C53"/>
-            <g fill="#C8FF4D"><rect x="80" y="14" width="4" height="6" rx="1"/><rect x="87" y="10" width="4" height="10" rx="1"/><rect x="94" y="6" width="4" height="14" rx="1"/></g>
-            <rect x="26" y="24" width="68" height="46" rx="8" fill="#0E2A26" stroke="#2C5C53"/>
-            <text x="34" y="42" fill="#9FBDB6" font-family="IBM Plex Mono, monospace" font-size="8">TOTAL</text>
-            <text x="34" y="60" fill="#F5F1E6" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="600">R$ 42,40</text>
-            <g fill="#1B4A43">
-              <rect x="26" y="82" width="18" height="16" rx="4"/><rect x="50" y="82" width="18" height="16" rx="4"/><rect x="74" y="82" width="18" height="16" rx="4"/>
-              <rect x="26" y="104" width="18" height="16" rx="4"/><rect x="50" y="104" width="18" height="16" rx="4"/><rect x="74" y="104" width="18" height="16" rx="4"/>
-              <rect x="26" y="126" width="18" height="16" rx="4"/><rect x="50" y="126" width="18" height="16" rx="4"/>
-            </g>
-            <rect x="74" y="126" width="18" height="16" rx="4" fill="#C8FF4D"/>
-            <rect x="26" y="150" width="66" height="14" rx="6" fill="#1B4A43"/>
-            <text x="60" y="176" text-anchor="middle" fill="#9FD93F" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="1">MEGA+</text>
-          </svg>
+      <button class="model-card buy-btn" data-model="t2mega" aria-label="Pedir T2 Ton Mega+ por R$ 42,40 — abre em nova guia">
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/7593d68c-85b3-4576-be4b-fe8824565778/maquininha-t2-right.png" alt="Maquininha Ton T2 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="model-info">
+          <span class="tag">sem depender de wi-fi</span>
+          <h3>T2 Ton Mega+</h3>
+          <p class="desc">Funciona sem wi-fi, com chip próprio.</p>
+          <div class="price"><span class="old">R$ 49,88</span><span class="new">R$ 42,40</span> <span class="badge-off">-15%</span></div>
         </div>
-        <h3>T2 Ton Mega+</h3>
-        <div class="price"><span class="old">R$ 49,88</span><span class="new">R$ 42,40</span></div>
-        <p class="desc">Pra você não ficar sem sinal: tem chip próprio e funciona sozinha, em qualquer lugar. Ótima pra quem atende em domicílio ou vende na rua.</p>
-        <div class="buy-row">Quero essa <span class="arrow" aria-hidden="true">→</span></div>
+        <span class="model-arrow" aria-hidden="true">→</span>
       </button>
-      <button class="model-card reveal buy-btn tilt featured" data-model="t3mega" aria-label="Pedir T3 Ton Mega+ por R$ 91,80 — abre em nova guia">
-        <span class="tag">+ vendida</span>
-        <div class="model-thumb">
-          <img class="thumb-photo" src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 Mega+" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <svg viewBox="0 0 120 190" aria-hidden="true" style="display:none">
-            <rect x="30" y="0" width="52" height="24" rx="3" fill="#F5F1E6"/>
-            <line x1="38" y1="8" x2="76" y2="8" stroke="#C9C3B2" stroke-width="2"/>
-            <line x1="38" y1="14" x2="66" y2="14" stroke="#C9C3B2" stroke-width="2"/>
-            <rect x="14" y="18" width="92" height="164" rx="20" fill="#123530" stroke="#2C5C53" stroke-width="2"/>
-            <rect x="28" y="16" width="56" height="8" rx="3" fill="#0A1F1C"/>
-            <rect x="26" y="34" width="68" height="42" rx="8" fill="#0E2A26" stroke="#2C5C53"/>
-            <text x="34" y="52" fill="#9FBDB6" font-family="IBM Plex Mono, monospace" font-size="8">TOTAL</text>
-            <text x="34" y="68" fill="#F5F1E6" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="600">R$ 91,80</text>
-            <g fill="#1B4A43">
-              <rect x="26" y="86" width="18" height="16" rx="4"/><rect x="50" y="86" width="18" height="16" rx="4"/><rect x="74" y="86" width="18" height="16" rx="4"/>
-              <rect x="26" y="108" width="18" height="16" rx="4"/><rect x="50" y="108" width="18" height="16" rx="4"/><rect x="74" y="108" width="18" height="16" rx="4"/>
-              <rect x="26" y="130" width="18" height="16" rx="4"/><rect x="50" y="130" width="18" height="16" rx="4"/>
-            </g>
-            <rect x="74" y="130" width="18" height="16" rx="4" fill="#C8FF4D"/>
-            <rect x="26" y="154" width="66" height="14" rx="6" fill="#1B4A43"/>
-          </svg>
+      <button class="model-card featured buy-btn" data-model="t3mega" aria-label="Pedir T3 Ton Mega+ por R$ 91,80 — abre em nova guia">
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="model-info">
+          <span class="tag">+ vendida</span>
+          <h3>T3 Ton Mega+</h3>
+          <p class="desc">A mais vendida. Imprime comprovante na hora.</p>
+          <div class="price"><span class="old">R$ 108,00</span><span class="new">R$ 91,80</span> <span class="badge-off">-15%</span></div>
         </div>
-        <h3>T3 Ton Mega+</h3>
-        <div class="price"><span class="old">R$ 108,00</span><span class="new">R$ 91,80</span></div>
-        <p class="desc">A mais completa da linha clássica: imprime comprovante na hora. Perfeita pra quem tem balcão fixo ou faz entregas com pagamento na porta.</p>
-        <div class="buy-row">Quero essa <span class="arrow" aria-hidden="true">→</span></div>
+        <span class="model-arrow" aria-hidden="true">→</span>
       </button>
-      <button class="model-card reveal buy-btn tilt" data-model="t3black" aria-label="Pedir T3 Ton Black por R$ 109,65 — abre em nova guia">
-        <span class="tag">taxas menores</span>
-        <div class="model-thumb">
-          <img class="thumb-photo" src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 (plano Ton Black)" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <svg viewBox="0 0 120 190" aria-hidden="true" style="display:none">
-            <rect x="30" y="0" width="52" height="24" rx="3" fill="#F5F1E6"/>
-            <line x1="38" y1="8" x2="76" y2="8" stroke="#C9C3B2" stroke-width="2"/>
-            <line x1="38" y1="14" x2="66" y2="14" stroke="#C9C3B2" stroke-width="2"/>
-            <rect x="14" y="18" width="92" height="164" rx="20" fill="#123530" stroke="#2C5C53" stroke-width="2"/>
-            <rect x="28" y="16" width="56" height="8" rx="3" fill="#0A1F1C"/>
-            <rect x="26" y="34" width="68" height="42" rx="8" fill="#0E2A26" stroke="#2C5C53"/>
-            <text x="34" y="52" fill="#9FBDB6" font-family="IBM Plex Mono, monospace" font-size="8">TOTAL</text>
-            <text x="34" y="68" fill="#F5F1E6" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="600">R$ 109,65</text>
-            <g fill="#1B4A43">
-              <rect x="26" y="86" width="18" height="16" rx="4"/><rect x="50" y="86" width="18" height="16" rx="4"/><rect x="74" y="86" width="18" height="16" rx="4"/>
-              <rect x="26" y="108" width="18" height="16" rx="4"/><rect x="50" y="108" width="18" height="16" rx="4"/><rect x="74" y="108" width="18" height="16" rx="4"/>
-              <rect x="26" y="130" width="18" height="16" rx="4"/><rect x="50" y="130" width="18" height="16" rx="4"/>
-            </g>
-            <rect x="74" y="130" width="18" height="16" rx="4" fill="#C8FF4D"/>
-            <rect x="26" y="154" width="66" height="14" rx="6" fill="#1B4A43"/>
-          </svg>
+      <button class="model-card buy-btn" data-model="t3black" aria-label="Pedir T3 Ton Black por R$ 109,65 — abre em nova guia">
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="model-info">
+          <span class="tag">taxas menores</span>
+          <h3>T3 Ton Black</h3>
+          <p class="desc">Mesmo aparelho da T3, taxas menores.</p>
+          <div class="price"><span class="old">R$ 129,00</span><span class="new">R$ 109,65</span> <span class="badge-off">-15%</span></div>
         </div>
-        <h3>T3 Ton Black</h3>
-        <div class="price"><span class="old">R$ 129,00</span><span class="new">R$ 109,65</span></div>
-        <p class="desc">É o mesmo aparelho da T3, só que no plano de taxas Ton Black — pra quem fatura mais e quer taxas ainda menores por venda.</p>
-        <div class="buy-row">Quero essa <span class="arrow" aria-hidden="true">→</span></div>
+        <span class="model-arrow" aria-hidden="true">→</span>
       </button>
-      <button class="model-card reveal buy-btn tilt" data-model="t3smartmega" aria-label="Pedir T3 Smart Ton Mega+ por R$ 163,10 — abre em nova guia">
-        <span class="tag">tela touch</span>
-        <div class="model-thumb">
-          <img class="thumb-photo" src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Mega+" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <svg viewBox="0 0 120 190" aria-hidden="true" style="display:none">
-            <rect x="10" y="8" width="100" height="174" rx="22" fill="#123530" stroke="#2C5C53" stroke-width="2"/>
-            <circle cx="60" cy="20" r="2.5" fill="#2C5C53"/>
-            <rect x="20" y="30" width="80" height="122" rx="10" fill="#0E2A26" stroke="#2C5C53"/>
-            <text x="30" y="50" fill="#9FBDB6" font-family="IBM Plex Mono, monospace" font-size="8">CATÁLOGO</text>
-            <g>
-              <rect x="30" y="60" width="24" height="24" rx="6" fill="#1B4A43"/>
-              <rect x="58" y="60" width="24" height="24" rx="6" fill="#C8FF4D"/>
-              <rect x="86" y="60" width="6" height="24" rx="3" fill="#1B4A43"/>
-              <rect x="30" y="90" width="24" height="24" rx="6" fill="#1B4A43"/>
-              <rect x="58" y="90" width="24" height="24" rx="6" fill="#1B4A43"/>
-              <rect x="86" y="90" width="6" height="24" rx="3" fill="#1B4A43"/>
-            </g>
-            <rect x="30" y="122" width="62" height="20" rx="8" fill="#C8FF4D"/>
-            <rect x="46" y="160" width="28" height="4" rx="2" fill="#2C5C53"/>
-          </svg>
+      <button class="model-card buy-btn" data-model="t3smartmega" aria-label="Pedir T3 Smart Ton Mega+ por R$ 163,10 — abre em nova guia">
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Mega+" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="model-info">
+          <span class="tag">tela touch</span>
+          <h3>T3 Smart Ton Mega+</h3>
+          <p class="desc">Tela touch com catálogo de produtos.</p>
+          <div class="price"><span class="old">R$ 191,88</span><span class="new">R$ 163,10</span> <span class="badge-off">-15%</span></div>
         </div>
-        <h3>T3 Smart Ton Mega+</h3>
-        <div class="price"><span class="old">R$ 191,88</span><span class="new">R$ 163,10</span></div>
-        <p class="desc">Maquininha Android com tela grande e catálogo de produtos direto na tela, pra agilizar o caixa de quem já vende todo dia.</p>
-        <div class="buy-row">Quero essa <span class="arrow" aria-hidden="true">→</span></div>
+        <span class="model-arrow" aria-hidden="true">→</span>
       </button>
-      <button class="model-card reveal buy-btn tilt" data-model="t3smartblack" aria-label="Pedir T3 Smart Ton Black por R$ 160,65 — abre em nova guia">
-        <span class="tag">completa + taxas menores</span>
-        <div class="model-thumb">
-          <img class="thumb-photo" src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart (plano Ton Black)" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <svg viewBox="0 0 120 190" aria-hidden="true" style="display:none">
-            <rect x="10" y="8" width="100" height="174" rx="22" fill="#123530" stroke="#2C5C53" stroke-width="2"/>
-            <circle cx="60" cy="20" r="2.5" fill="#2C5C53"/>
-            <rect x="20" y="30" width="80" height="122" rx="10" fill="#0E2A26" stroke="#2C5C53"/>
-            <text x="30" y="50" fill="#9FBDB6" font-family="IBM Plex Mono, monospace" font-size="8">CATÁLOGO</text>
-            <g>
-              <rect x="30" y="60" width="24" height="24" rx="6" fill="#1B4A43"/>
-              <rect x="58" y="60" width="24" height="24" rx="6" fill="#C8FF4D"/>
-              <rect x="86" y="60" width="6" height="24" rx="3" fill="#1B4A43"/>
-              <rect x="30" y="90" width="24" height="24" rx="6" fill="#1B4A43"/>
-              <rect x="58" y="90" width="24" height="24" rx="6" fill="#1B4A43"/>
-              <rect x="86" y="90" width="6" height="24" rx="3" fill="#1B4A43"/>
-            </g>
-            <rect x="30" y="122" width="62" height="20" rx="8" fill="#C8FF4D"/>
-            <rect x="46" y="160" width="28" height="4" rx="2" fill="#2C5C53"/>
-          </svg>
+      <button class="model-card buy-btn" data-model="t3smartblack" aria-label="Pedir T3 Smart Ton Black por R$ 160,65 — abre em nova guia">
+        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="model-info">
+          <span class="tag">completa + taxas menores</span>
+          <h3>T3 Smart Ton Black</h3>
+          <p class="desc">Tela touch e taxas ainda menores.</p>
+          <div class="price"><span class="old">R$ 189,00</span><span class="new">R$ 160,65</span> <span class="badge-off">-15%</span></div>
         </div>
-        <h3>T3 Smart Ton Black</h3>
-        <div class="price"><span class="old">R$ 189,00</span><span class="new">R$ 160,65</span></div>
-        <p class="desc">É o mesmo aparelho da T3 Smart, só que no plano de taxas Ton Black. Tela grande, catálogo na tela e taxas ainda menores.</p>
-        <div class="buy-row">Quero essa <span class="arrow" aria-hidden="true">→</span></div>
+        <span class="model-arrow" aria-hidden="true">→</span>
       </button>
+    </div>
+    <div class="fee-strip">
+      <span>Pix grátis</span><span>Débito 0,57%</span><span>Mensalidade R$0</span><span>Frete grátis</span>
+    </div>
+    <p class="mini-steps"><b>Peça</b> → <b>receba em casa</b> → <b>comece a vender</b>. Sem burocracia.</p>
+    <div style="text-align:center; margin-top:22px;">
+      <button class="btn btn-pulse buy-btn" data-model="geral">Quero a minha com 15% off →<span class="visually-hidden"> — abre em nova guia</span></button>
     </div>
   </section>
-  <!-- TAXAS -->
-  <section id="taxas" class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">taxas</div>
-      <h2>Taxas simples, sem letra miúda</h2>
-      <p>Você só paga quando vende. Sem mensalidade, sem aluguel e sem taxa de adesão.</p>
+
+  <!-- 5. QUEBRA DE OBJEÇÕES -->
+  <section class="wrap" style="padding-top:0;">
+    <div class="section-head">
+      <h2>Risco zero pra você</h2>
     </div>
-    <div class="fees-layout">
-      <div class="fees reveal">
-        <div class="fees-inner">
-          <h3>Recibo de taxas</h3>
-          <div class="fee-row"><span>Pix</span><b>Grátis</b></div>
-          <div class="fee-row"><span>Débito</span><b>a partir de 0,57%</b></div>
-          <div class="fee-row"><span>Crédito à vista</span><b>simulado no app</b></div>
-          <div class="fee-row"><span>Crédito parcelado</span><b>simulado no app</b></div>
-          <div class="fee-row total"><span>Mensalidade</span><b>R$ 0,00</b></div>
-        </div>
-      </div>
-      <div class="fees-side reveal">
-        <div class="fee-point">
-          <div class="ic">$</div>
-          <div><h4>Taxa só em cima do que você vende</h4><p>Sem venda no mês, sem taxa nenhuma. Nada de mensalidade fixa cobrada da sua conta.</p></div>
-        </div>
-        <div class="fee-point">
-          <div class="ic">%</div>
-          <div><h4>Taxa exata depende do plano</h4><p>Débito, crédito à vista e parcelado variam conforme o modelo e o plano escolhido. O valor final aparece simulado no app antes de você confirmar qualquer coisa.</p></div>
-        </div>
-        <div class="fee-point">
-          <div class="ic">⚡</div>
-          <div><h4>Antecipação opcional</h4><p>Quer o dinheiro do crédito parcelado na hora? É possível antecipar direto pelo app, por uma taxa adicional, quando quiser.</p></div>
+    <div class="objection-grid">
+      <div class="tcard"><span class="ic" aria-hidden="true">$</span><h3>Sem mensalidade</h3><p>Paga só quando vende</p></div>
+      <div class="tcard"><span class="ic" aria-hidden="true">📄</span><h3>Sem burocracia</h3><p>CPF ou CNPJ</p></div>
+      <div class="tcard"><span class="ic" aria-hidden="true">⚡</span><h3>Dinheiro rápido</h3><p>Pix na hora</p></div>
+      <div class="tcard"><span class="ic" aria-hidden="true">🛡️</span><h3>Fácil cancelar</h3><p>Sem multa</p></div>
     </div>
   </section>
-  <!-- COMO FUNCIONA -->
-  <section id="como-funciona" class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">como funciona</div>
-      <h2>Do pedido à primeira venda em 3 passos</h2>
+
+  <!-- prova social qualitativa -->
+  <section class="wrap" style="padding-top:0;">
+    <div class="section-head">
+      <h2>Quem já usa</h2>
     </div>
-    <div class="steps">
-      <div class="step reveal">
-        <div class="n">01</div>
-        <h3>Escolha e peça</h3>
-        <p>Selecione o modelo ideal pro seu negócio e finalize o pedido com frete grátis pra todo o Brasil.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars" aria-hidden="true">★★★★★</div>
+        <p class="quote">"A diferença de taxa apareceu direto no caixa no fim do mês."</p>
+        <div class="testi-who"><b>Camila R.</b> Salão de beleza</div>
       </div>
-      <div class="step reveal">
-        <div class="n">02</div>
-        <h3>Receba em casa</h3>
-        <p>Sua maquininha chega já configurada. Baixe o app Ton e ative em poucos minutos, sem burocracia.</p>
+      <div class="testi-card">
+        <div class="testi-stars" aria-hidden="true">★★★★★</div>
+        <p class="quote">"Não pagar mensalidade fez diferença logo no primeiro mês."</p>
+        <div class="testi-who"><b>Marcos T.</b> Loja de bairro</div>
       </div>
-      <div class="step reveal">
-        <div class="n">03</div>
-        <h3>Comece a vender</h3>
-        <p>Aceite Pix, débito e crédito na hora. O dinheiro cai na sua Conta Ton — sem esperar semanas.</p>
-      </div>
+    </div>
+    <div style="text-align:center; margin-top:20px;">
+      <button class="btn btn-pulse buy-btn" data-model="geral">Quero pagar menos taxas →<span class="visually-hidden"> — abre em nova guia</span></button>
     </div>
   </section>
-  <!-- FAQ -->
-  <section id="duvidas" class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">dúvidas</div>
-      <h2>Antes de pedir a sua</h2>
+
+  <!-- 6. FAQ -->
+  <section id="duvidas" class="wrap" style="padding-top:0;">
+    <div class="section-head">
+      <h2>Dúvidas rápidas</h2>
     </div>
-    <div class="faq-list reveal">
+    <div class="faq-list">
       <div class="faq-item open">
-        <button class="faq-q" aria-expanded="true"><span>A maquininha Ton cobra mensalidade?</span><span class="plus" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>Não. Você compra o equipamento uma vez e usa por tempo indeterminado, sem aluguel nem mensalidade. Paga só a taxa sobre cada venda.</p></div>
+        <button class="faq-q" aria-expanded="true"><span>Tem mensalidade?</span><span class="plus" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Não. Você paga só quando vende.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>Preciso ter CNPJ pra usar?</span><span class="plus" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>Não. Você pode se cadastrar com CPF ou CNPJ, com as mesmas taxas. Só pra aceitar vale-alimentação e vale-refeição (Alelo, VR, etc.) é preciso ter CNPJ.</p></div>
+        <button class="faq-q" aria-expanded="false"><span>Quanto tempo pra receber?</span><span class="plus" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Pix na hora. Débito em 1 dia útil ou na hora.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>Quanto tempo leva pra receber o dinheiro?</span><span class="plus" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>O Pix cai na hora. Débito e crédito à vista podem cair em 1 dia útil ou na hora, dependendo do prazo escolhido no app.</p></div>
+        <button class="faq-q" aria-expanded="false"><span>Posso cancelar quando quiser?</span><span class="plus" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Sim, sem multa. O aparelho é seu, sem fidelidade.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>E se a maquininha der defeito?</span><span class="plus" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>A garantia é vitalícia contra defeito de fabricação. A troca é solicitada direto pelo app, sem custo.</p></div>
+        <button class="faq-q" aria-expanded="false"><span>Por que comprar aqui?</span><span class="plus" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Mesmo checkout oficial da Ton, já com o desconto do parceiro aplicado — sem cupom.</p></div>
       </div>
     </div>
   </section>
-  <!-- CTA final -->
+
+  <!-- 7. CTA FINAL -->
   <section class="wrap">
-    <div class="final-cta reveal">
-      <h2>Pronto pra parar de perder venda?</h2>
-      <p>Peça sua maquininha Ton agora com o link abaixo — frete grátis e configuração simples.</p>
-      <button class="btn btn-pulse buy-btn" data-model="geral">Pedir minha maquininha →<span class="visually-hidden"> — abre em nova guia</span></button>
+    <div class="final-cta">
+      <h2>Pare de pagar taxa a mais</h2>
+      <p>0,57% no débito. R$0 de mensalidade. Garantia vitalícia. Comece a economizar hoje.</p>
+      <button class="btn btn-pulse block buy-btn" data-model="geral">Quero pagar menos taxas →<span class="visually-hidden"> — abre em nova guia</span></button>
     </div>
   </section>
 </main>
 <footer>
   <div class="wrap">
     <div class="logo"><span class="dot"></span>ton<span style="color:var(--lime)">.</span></div>
-    <nav class="foot-links">
-      <a href="#modelos">Modelos</a>
-      <a href="#taxas">Taxas</a>
-      <a href="#duvidas">Dúvidas</a>
-    </nav>
+    <p>Oferta de parceiro autorizado Ton · preços e taxas sujeitos a alteração.</p>
   </div>
 </footer>
 
+<!-- CTA fixo no rodapé — sempre visível -->
 <div class="sticky-buy" id="sticky-buy">
-  <div class="info"><b>Maquininha Ton</b><span>Frete grátis · sem mensalidade</span></div>
-  <button class="btn small buy-btn" data-model="geral">Pedir agora →</button>
-  <button class="close" id="sticky-buy-close" aria-label="Fechar barra de compra">✕</button>
+  <div class="info"><b>Pare de perder dinheiro</b>0,57% no débito · sem mensalidade</div>
+  <button class="btn small buy-btn" data-model="geral">Quero pagar menos →</button>
 </div>
 
 <script>
@@ -802,44 +570,8 @@
   // Mede o CLIQUE no link de afiliado (intenção), não uma compra concluída.
   function trackBuyClick(model){
     if (typeof gtag === 'function') {
-      gtag('event', 'select_content', {
-        content_type: 'maquininha_ton',
-        item_id: model || 'geral'
-      });
+      gtag('event', 'select_content', { content_type: 'maquininha_ton', item_id: model || 'geral' });
     }
-  }
-
-  function launchConfetti(x, y){
-    if (prefersReducedMotion) return;
-    const colors = ['#C8FF4D', '#9FD93F', '#F5F1E6'];
-    for (let i = 0; i < 10; i++){
-      const p = document.createElement('div');
-      p.className = 'confetti-particle';
-      p.style.left = x + 'px';
-      p.style.top = y + 'px';
-      p.style.background = colors[i % colors.length];
-      document.body.appendChild(p);
-      const angle = Math.random() * Math.PI * 2;
-      const dist = 40 + Math.random() * 55;
-      const dx = Math.cos(angle) * dist;
-      const dy = Math.sin(angle) * dist - 18;
-      const anim = p.animate([
-        { transform: 'translate(0,0) scale(1)', opacity: 1 },
-        { transform: `translate(${dx}px, ${dy}px) scale(0.3)`, opacity: 0 }
-      ], { duration: 650 + Math.random() * 250, easing: 'cubic-bezier(.2,.8,.2,1)' });
-      anim.onfinish = () => p.remove();
-    }
-  }
-
-  function showMicroToast(x, y, text){
-    const t = document.createElement('div');
-    t.className = 'micro-toast';
-    t.textContent = text;
-    t.style.left = x + 'px';
-    t.style.top = y + 'px';
-    document.body.appendChild(t);
-    requestAnimationFrame(() => t.classList.add('show'));
-    setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, 900);
   }
 
   document.querySelectorAll('.buy-btn').forEach(el => {
@@ -847,47 +579,39 @@
       const model = el.getAttribute('data-model') || 'geral';
       const link = AFFILIATE_LINKS[model] || AFFILIATE_LINKS.geral;
       trackBuyClick(model);
-      // Feedback visual instantâneo (não atrasa a abertura do link,
-      // pra não ser bloqueado como pop-up pelo navegador)
-      const rect = el.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      launchConfetti(cx, cy);
-      showMicroToast(cx, rect.top, 'Abrindo seu pedido…');
-      // Vibração leve em celulares compatíveis — feedback tátil no toque
-      if (!prefersReducedMotion && typeof navigator.vibrate === 'function') {
-        navigator.vibrate(12);
-      }
+      if (!prefersReducedMotion && typeof navigator.vibrate === 'function') navigator.vibrate(12);
       window.open(link, '_blank', 'noopener');
     });
   });
 
-  // Feedback de "toque" no celular (não existe :hover, então simulamos
-  // um leve "afundar" ao encostar o dedo, tanto nos cards quanto nos botões)
-  document.querySelectorAll('.model-card, .btn').forEach(el => {
-    el.addEventListener('pointerdown', (e) => {
-      if (e.pointerType === 'touch') el.classList.add('pressed');
-    }, {passive: true});
-    ['pointerup', 'pointercancel', 'pointerleave'].forEach(evt => {
-      el.addEventListener(evt, () => el.classList.remove('pressed'), {passive: true});
-    });
-  });
-
-  // Menu mobile
-  const navToggle = document.getElementById('nav-toggle');
-  const navLinks = document.getElementById('nav-links');
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-      navToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
-    });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      navToggle.setAttribute('aria-label', 'Abrir menu');
-    }));
+  // Calculadora de economia (taxa de débito à vista, comparação ilustrativa)
+  const calcInput = document.getElementById('calc-input');
+  const RATES = { ton: 0.0057, mp: 0.0074, su: 0.0080, pb: 0.0199 };
+  const brl = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  function parseCalcValue(raw){
+    const cleaned = String(raw).replace(/\./g, '').replace(',', '.').replace(/[^\d.]/g, '');
+    const n = parseFloat(cleaned);
+    return isNaN(n) || n < 0 ? 0 : n;
   }
+  function updateCalc(){
+    const volume = parseCalcValue(calcInput.value);
+    const values = { ton: volume * RATES.ton, mp: volume * RATES.mp, su: volume * RATES.su, pb: volume * RATES.pb };
+    const max = Math.max(values.pb, values.mp, values.su, values.ton, 1);
+    ['ton', 'mp', 'su', 'pb'].forEach(key => {
+      const fill = document.getElementById('calc-fill-' + key);
+      const val = document.getElementById('calc-val-' + key);
+      if (fill) fill.style.width = ((values[key] / max) * 100).toFixed(1) + '%';
+      if (val) val.textContent = brl(values[key]);
+    });
+    const savings = document.getElementById('calc-savings');
+    if (savings) {
+      const diff = values.pb - values.ton;
+      savings.innerHTML = diff > 0
+        ? `Isso é <b>${brl(diff)}</b> a menos por mês do que no PagBank.`
+        : `Preencha um valor de vendas pra ver a comparação.`;
+    }
+  }
+  if (calcInput) { calcInput.addEventListener('input', updateCalc); updateCalc(); }
 
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
@@ -898,80 +622,12 @@
     });
   });
 
-  // scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, {threshold: 0.12});
-  revealEls.forEach(el => io.observe(el));
-
-  // scroll progress bar
-  const progressBar = document.getElementById('scroll-progress');
-  function updateProgress(){
-    const h = document.documentElement;
-    const scrolled = h.scrollTop;
-    const height = h.scrollHeight - h.clientHeight;
-    progressBar.style.width = (height > 0 ? (scrolled / height) * 100 : 0) + '%';
-  }
-  window.addEventListener('scroll', updateProgress, {passive: true});
-  updateProgress();
-
-  // scrollspy na navegação
-  const spySections = ['modelos', 'taxas', 'como-funciona', 'duvidas']
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-  const spyLinks = {};
-  navLinks && navLinks.querySelectorAll('a').forEach(a => { spyLinks[a.getAttribute('href')] = a; });
-  const spyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const link = spyLinks['#' + entry.target.id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        Object.values(spyLinks).forEach(a => a.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, {rootMargin: '-45% 0px -50% 0px', threshold: 0});
-  spySections.forEach(s => spyObserver.observe(s));
-
-  // barra de compra flutuante
+  // barra de compra fixa: aparece logo, some só se o usuário já está no topo do topo
   const stickyBuy = document.getElementById('sticky-buy');
-  const stickyBuyClose = document.getElementById('sticky-buy-close');
-  const heroSection = document.querySelector('.hero');
-  let stickyDismissed = false;
-  if (stickyBuy && heroSection) {
-    window.addEventListener('scroll', () => {
-      if (stickyDismissed) return;
-      const past = heroSection.getBoundingClientRect().bottom < 0;
-      stickyBuy.classList.toggle('show', past);
-    }, {passive: true});
-  }
-  if (stickyBuyClose) {
-    stickyBuyClose.addEventListener('click', () => {
-      stickyDismissed = true;
-      stickyBuy.classList.remove('show');
-    });
-  }
-
-  // tilt 3D sutil (cards de modelo + maquininha do hero) — só em dispositivos com mouse
-  if (!prefersReducedMotion) {
-    function attachTilt(el, max){
-      if (!el) return;
-      el.addEventListener('mousemove', (e) => {
-        const r = el.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform = `translateY(-6px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg)`;
-      });
-      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-    }
-    document.querySelectorAll('.model-card.tilt').forEach(c => attachTilt(c, 7));
-    attachTilt(document.getElementById('hero-device'), 12);
+  if (stickyBuy) {
+    function toggleSticky(){ stickyBuy.classList.toggle('show', window.scrollY > 80); }
+    window.addEventListener('scroll', toggleSticky, {passive:true});
+    toggleSticky();
   }
 </script>
 </body>
