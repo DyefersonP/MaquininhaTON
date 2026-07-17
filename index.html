@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ton — Pare de perder dinheiro na taxa errada</title>
-<meta name="description" content="0,57% no débito. R$0 de mensalidade. Garantia vitalícia. Veja quanto você economiza e peça a sua com desconto.">
+<title>Ton — Pare de perder dinheiro com taxa errada no cartão</title>
+<meta name="description" content="0,57% no débito nos primeiros 30 dias. R$0 de mensalidade, pra sempre. Peça sua maquininha Ton com desconto de parceiro, direto no checkout oficial.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0E2A26">
 
 <!-- Open Graph / redes sociais. Preencha "SEU-DOMINIO-AQUI" com a URL real da página antes de publicar. -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Ton — Pare de perder dinheiro na taxa errada">
-<meta property="og:description" content="0,57% no débito. R$0 de mensalidade. Garantia vitalícia.">
-<meta property="og:url" content="https://SEU-DOMINIO-AQUI/">
-<meta property="og:image" content="https://SEU-DOMINIO-AQUI/og-image.jpg">
+<meta property="og:title" content="Ton — Pare de perder dinheiro com taxa errada no cartão">
+<meta property="og:description" content="0,57% no débito nos primeiros 30 dias. R$0 de mensalidade, pra sempre.">
+<meta property="og:url" content="https://dyefersonp.github.io/MaquininhaTON/">
+<meta property="og:image" content="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp">
+<link rel="canonical" href="https://dyefersonp.github.io/MaquininhaTON/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ton — Pare de perder dinheiro na taxa errada">
-<meta name="twitter:description" content="0,57% no débito. R$0 de mensalidade.">
+<meta name="twitter:title" content="Ton — Pare de perder dinheiro com taxa errada no cartão">
+<meta name="twitter:description" content="0,57% no débito nos primeiros 30 dias. R$0 de mensalidade, pra sempre.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E2A26'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23C8FF4D'/%3E%3C/svg%3E">
 
@@ -38,7 +39,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://martech-web-cdn.stone.com.br">
+<link rel="preload" as="image" fetchpriority="high" href="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #0E2A26;
@@ -79,7 +82,7 @@
     padding:10px 16px; border-radius:10px; transition:top .15s ease;
   }
   .skip-link:focus{top:12px;}
-  /* ---------- header enxuto: logo + 1 CTA, sem menu ---------- */
+  /* ---------- header enxuto: só logo + 1 CTA, sem menu (landing page não precisa de navegação) ---------- */
   header.nav{
     position:sticky; top:0; z-index:40;
     background:rgba(14,42,38,0.92);
@@ -115,18 +118,19 @@
     overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
   }
   /* ---------- hero: tudo visível sem rolar ---------- */
-  .hero{padding:28px 0 32px;}
+  .hero{padding:22px 0 28px;}
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
     font-family:'IBM Plex Mono'; font-size:12px; color:var(--lime);
     border:1px solid rgba(200,255,77,0.35); padding:5px 11px; border-radius:100px;
-    margin-bottom:16px;
+    margin-bottom:14px;
   }
   .pulse-dot{display:inline-block; animation:dotfade 1.6s ease-in-out infinite;}
   @keyframes dotfade{0%,100%{opacity:1;} 50%{opacity:.3;}}
-  .hero h1{font-size:clamp(28px, 8vw, 42px); line-height:1.08; margin-bottom:12px;}
+  .hero h1{font-size:clamp(27px, 7.5vw, 40px); line-height:1.1; margin-bottom:10px;}
   .hero h1 em{font-style:normal; color:var(--lime);}
-  .hero p.lead{font-size:16px; color:var(--muted); max-width:460px; margin-bottom:22px;}
+  .hero p.lead{font-size:16px; color:var(--muted); max-width:460px; margin-bottom:20px;}
+  .hero p.lead b{color:var(--paper);}
   .hero-ctas{display:flex; flex-direction:column; align-items:flex-start; gap:10px;}
   .risk-note{
     display:flex; align-items:center; gap:6px;
@@ -135,72 +139,90 @@
   .risk-note svg{width:13px; height:13px; flex:none; color:var(--lime);}
   .hero-visual{
     position:relative; display:flex; justify-content:center; align-items:center;
-    min-height:220px; margin-top:28px;
+    min-height:210px; margin-top:24px;
   }
   .device{width:150px; filter:drop-shadow(0 22px 30px rgba(0,0,0,0.4));}
   .device-wrap{position:relative; display:block;}
   @media (min-width:640px){
-    .hero-visual{min-height:260px;}
+    .hero-visual{min-height:250px;}
     .device{width:180px;}
   }
-  /* ---------- faixa de estatísticas: oferta + prova social num só golpe ---------- */
+  /* ---------- faixa de estatísticas: números oficiais como prova, no lugar de depoimento ---------- */
   .statbar{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg-2);}
-  .statbar .wrap{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; padding:20px; text-align:center;}
+  .statbar .wrap{padding:20px 20px 4px;}
+  .statbar .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; text-align:center;}
   .statbar .num{font-family:'Space Grotesk'; font-size:22px; color:var(--lime); line-height:1.1;}
   .statbar .label{font-size:11.5px; color:var(--muted); margin-top:2px;}
-  @media (min-width:640px){ .statbar .wrap{grid-template-columns:repeat(4,1fr);} .statbar .num{font-size:26px;} }
+  .stat-foot{font-size:12px; color:var(--muted); text-align:center; padding:12px 4px 16px; line-height:1.5;}
+  @media (min-width:640px){ .statbar .grid{grid-template-columns:repeat(4,1fr);} .statbar .num{font-size:26px;} }
   /* ---------- seções ---------- */
-  section{padding:44px 0;}
-  .section-head{margin-bottom:22px;}
+  section{padding:40px 0;}
+  .section-head{margin-bottom:20px;}
   .section-head h2{font-size:clamp(22px,6vw,30px); margin-bottom:6px;}
   .section-head p{color:var(--muted); font-size:14.5px;}
   /* ---------- benefícios rápidos ---------- */
   .quick-benefits{list-style:none;}
   .quick-benefits li{
     display:flex; align-items:flex-start; gap:10px;
-    font-size:15px; padding:11px 0; border-bottom:1px solid var(--line);
+    font-size:16px; padding:12px 0; border-bottom:1px solid var(--line);
   }
   .quick-benefits li:last-child{border-bottom:none;}
-  .quick-benefits .ck{color:var(--lime); font-weight:700; flex:none;}
-  /* ---------- calculadora compacta ---------- */
-  .calc-card{
+  .quick-benefits .ck{flex:none; font-size:18px;}
+  /* ---------- contato ---------- */
+  .contact-card{
     background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
     padding:22px;
   }
-  .calc-card label{display:block; font-family:'Space Grotesk'; font-weight:600; font-size:14.5px; margin-bottom:10px;}
-  .calc-input-row{
-    display:flex; align-items:center; gap:8px; background:var(--bg-2);
-    border:1px solid var(--line); border-radius:12px; padding:10px 14px; margin-bottom:18px;
+  .contact-grid{display:flex; flex-direction:column; gap:14px;}
+  .contact-field label{display:block; font-family:'Space Grotesk'; font-weight:600; font-size:13.5px; margin-bottom:7px;}
+  .contact-field input, .contact-field textarea{
+    width:100%; background:var(--bg-2); border:1px solid var(--line); border-radius:12px;
+    padding:12px 14px; color:var(--paper); font-family:'Inter', sans-serif; font-size:14.5px;
+    outline:none; transition:border-color .15s ease;
   }
-  .calc-input-row:focus-within{border-color:var(--lime);}
-  .calc-input-row .prefix{font-family:'IBM Plex Mono'; color:var(--muted); font-size:16px;}
-  .calc-input-row input{
-    flex:1; background:none; border:none; outline:none; color:var(--paper);
-    font-family:'IBM Plex Mono'; font-size:18px; font-weight:600; min-width:0;
+  .contact-field textarea{min-height:110px; resize:vertical; line-height:1.5;}
+  .contact-field input:focus, .contact-field textarea:focus{border-color:var(--lime);}
+  .contact-field input::placeholder, .contact-field textarea::placeholder{color:var(--muted); opacity:.8;}
+  .contact-status{font-size:13px; color:var(--lime); margin-top:2px; display:none;}
+  .contact-status.show{display:block;}
+  .contact-direct{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    margin-top:20px; padding-top:20px; border-top:1px solid var(--line); font-size:14px;
   }
-  .calc-results{display:flex; flex-direction:column; gap:12px; margin-bottom:16px;}
-  .calc-row{display:grid; grid-template-columns:1fr auto; row-gap:6px; align-items:center; gap:10px; font-size:12.5px;}
-  .calc-row.ton .calc-label b{color:var(--lime);}
-  .calc-label{color:var(--muted);}
-  .calc-label b{color:var(--paper); font-family:'Space Grotesk';}
-  .calc-bar{grid-column:1/-1; height:7px; border-radius:100px; background:rgba(245,241,230,0.08); overflow:hidden;}
-  .calc-fill{height:100%; width:0%; border-radius:100px; background:var(--muted); transition:width .4s cubic-bezier(.2,.8,.2,1);}
-  .calc-row.ton .calc-fill{background:linear-gradient(90deg, var(--lime), var(--lime-dim));}
-  .calc-value{font-family:'IBM Plex Mono'; font-weight:600; text-align:right;}
-  .calc-savings{
-    font-family:'Space Grotesk'; font-size:15px; background:rgba(200,255,77,0.1);
-    border:1px solid rgba(200,255,77,0.3); border-radius:12px; padding:12px 16px;
+  .contact-direct .ic{font-size:18px; flex:none;}
+  .contact-direct a{color:var(--lime); font-family:'IBM Plex Mono'; font-weight:600; word-break:break-all;}
+  .contact-direct a:hover{text-decoration:underline;}
+  .contact-note{font-size:11.5px; color:var(--muted); margin-top:12px;}
+  /* ---------- produto em destaque (1 oferta única) ---------- */
+  .featured-product{
+    background:var(--card); border:1px solid rgba(200,255,77,0.5); border-radius:var(--radius);
+    padding:24px 20px; text-align:center;
   }
-  .calc-savings b{color:var(--lime);}
-  .calc-foot{font-size:11px; color:var(--muted); margin-top:10px;}
-  /* ---------- modelos ---------- */
-  .quick-pick{
-    display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
-    background:var(--card); border:1px solid rgba(200,255,77,0.35); border-radius:var(--radius);
-    padding:16px; margin-bottom:20px;
+  .featured-product .tag{font-family:'IBM Plex Mono'; font-size:12px; color:var(--lime); display:block; margin-bottom:10px;}
+  .featured-product .model-thumb-lg{
+    width:180px; height:180px; margin:0 auto 14px; border-radius:18px;
+    background:linear-gradient(150deg, #F5F1E6, #E7E1D2); display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
-  .quick-pick .txt{font-size:14px;}
-  .quick-pick .txt b{font-family:'Space Grotesk'; display:block; font-size:15px;}
+  .featured-product .model-thumb-lg img{height:100%; width:100%; object-fit:contain; padding:14px;}
+  .featured-product h3{font-size:24px; margin-bottom:6px;}
+  .featured-product .desc{font-size:14.5px; color:var(--muted); margin-bottom:12px; line-height:1.4;}
+  .featured-product .price{display:flex; align-items:baseline; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+  /* ---------- outros modelos (secundário, recolhido) ---------- */
+  .other-models{margin-top:22px;}
+  .other-models summary{
+    cursor:pointer; list-style:none; font-family:'Space Grotesk'; font-weight:600; font-size:14px;
+    color:var(--muted); padding:12px 4px; display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .other-models summary::-webkit-details-marker{display:none;}
+  .other-models summary:hover, .other-models[open] summary{color:var(--lime);}
+  .models-grid-compact{display:flex; flex-direction:column; gap:10px; margin-top:10px;}
+  .model-card.compact{padding:10px 12px; gap:12px;}
+  .model-card.compact .model-thumb{width:60px; height:60px; border-radius:10px;}
+  .model-card.compact .model-info h3{font-size:14.5px; margin-bottom:2px;}
+  .model-card.compact .model-info .tag{font-size:10.5px; margin-bottom:1px;}
+  .model-card.compact .model-info .new{font-size:14.5px;}
+  .model-card.compact .model-info .old{font-size:11px;}
+  .model-card.compact .model-arrow{font-size:14px;}
   .models-grid{display:flex; flex-direction:column; gap:14px;}
   .model-card{
     background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
@@ -236,7 +258,25 @@
   }
   .mini-steps{font-size:13px; color:var(--muted); text-align:center; margin-top:18px;}
   .mini-steps b{color:var(--paper);}
-  /* ---------- quebra de objeções ---------- */
+  /* ---------- comparação ---------- */
+  .compare-trust{
+    font-size:13.5px; color:var(--paper); background:rgba(200,255,77,0.08);
+    border:1px solid rgba(200,255,77,0.25); border-radius:12px; padding:12px 14px; margin-bottom:16px;
+  }
+  .compare-trust b{color:var(--lime);}
+  .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 -20px; padding:0 20px;}
+  .compare-table{width:100%; border-collapse:collapse; min-width:540px;}
+  .compare-table th, .compare-table td{padding:12px 10px; text-align:center; border-bottom:1px solid var(--line); vertical-align:middle;}
+  .compare-table th{font-family:'Space Grotesk'; font-size:13px; color:var(--muted); font-weight:600;}
+  .compare-table th.hl{color:var(--lime);}
+  .compare-table td.hl, .compare-table th.hl{background:rgba(200,255,77,0.07);}
+  .compare-table td:first-child, .compare-table th:first-child{text-align:left; font-size:12.5px; color:var(--muted); min-width:120px;}
+  .cmp-rate{font-family:'IBM Plex Mono'; font-weight:600; font-size:17px; color:var(--paper);}
+  .compare-table td.hl .cmp-rate{color:var(--lime);}
+  .cmp-sub{font-size:10.5px; color:var(--muted); margin-top:3px;}
+  .cmp-sub2{font-size:10px; color:var(--muted); opacity:.8; margin-top:1px;}
+  .compare-foot{font-size:12px; color:var(--muted); margin-top:14px; line-height:1.55;}
+  /* ---------- quebra de objeção ---------- */
   .objection-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
   .tcard{
     background:var(--card); border:1px solid var(--line); border-radius:14px;
@@ -246,18 +286,6 @@
   .tcard h3{font-size:13.5px; margin-bottom:3px;}
   .tcard p{font-size:11.5px; color:var(--muted);}
   @media (min-width:640px){ .objection-grid{grid-template-columns:repeat(4,1fr);} }
-  /* ---------- prova social ---------- */
-  .testi-grid{display:flex; flex-direction:column; gap:14px;}
-  .testi-card{
-    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-    padding:18px;
-  }
-  .testi-stars{color:var(--lime); font-size:13px; letter-spacing:2px; margin-bottom:8px;}
-  .testi-card p.quote{font-size:14px; margin-bottom:8px;}
-  .testi-who{font-size:12.5px; color:var(--muted);}
-  .testi-who b{color:var(--paper); font-family:'Space Grotesk';}
-  .testi-foot{font-size:11px; color:var(--muted); margin-top:6px; opacity:.75;}
-  @media (min-width:700px){ .testi-grid{flex-direction:row;} .testi-card{flex:1;} }
   /* ---------- faq ---------- */
   .faq-item{border-bottom:1px solid var(--line);}
   .faq-q{
@@ -269,7 +297,7 @@
   .faq-item.open .faq-q .plus{transform:rotate(45deg);}
   .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease; font-size:14px; line-height:1.6; color:var(--muted); padding:0 2px;}
   .faq-a p{margin:0;}
-  .faq-item.open .faq-a{max-height:240px; padding-top:2px; padding-bottom:16px;}
+  .faq-item.open .faq-a{max-height:280px; padding-top:2px; padding-bottom:16px;}
   /* ---------- CTA final ---------- */
   .final-cta{
     background:linear-gradient(135deg, #163F39, #0E2A26);
@@ -278,8 +306,10 @@
   }
   .final-cta h2{font-size:clamp(22px,6vw,30px); margin-bottom:8px;}
   .final-cta p{color:var(--muted); font-size:14.5px; margin-bottom:20px;}
-  footer{border-top:1px solid var(--line); padding:20px 0 84px; font-size:12px; color:var(--muted); text-align:center;}
+  footer{border-top:1px solid var(--line); padding:20px 0 96px; font-size:12px; color:var(--muted); text-align:center;}
   footer .logo{justify-content:center; margin-bottom:8px;}
+  footer p{margin-top:6px; line-height:1.5;}
+  footer a{color:var(--lime);}
   /* ---------- sticky CTA fixo — sempre visível ---------- */
   .sticky-buy{
     position:fixed; left:0; right:0; bottom:0; z-index:55;
@@ -293,7 +323,6 @@
   .sticky-buy .info{font-size:12px; color:var(--muted); flex:1; min-width:0; line-height:1.25;}
   .sticky-buy .info b{color:var(--paper); font-family:'Space Grotesk'; font-size:13.5px; display:block;}
   @media (max-width:380px){ .sticky-buy .info{display:none;} }
-  .reveal{ } /* sem animação de scroll: conteúdo sempre visível, sem risco de ficar oculto se o JS falhar */
   @media (min-width:880px){
     .hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;}
     .hero-visual{margin-top:0;}
@@ -310,167 +339,162 @@
 </header>
 <main id="main-content" tabindex="-1">
 
-  <!-- 1. HEADLINE + SUBHEADLINE + CTA (tudo acima da dobra) -->
+  <!-- 1. HERO — headline + subheadline + CTA, tudo acima da dobra -->
   <section class="hero">
     <div class="wrap">
       <div>
         <div class="eyebrow"><span class="pulse-dot" aria-hidden="true">●</span> parceiro autorizado Ton</div>
-        <h1>Você pode estar perdendo dinheiro na taxa errada</h1>
-        <p class="lead"><b>0,57%</b> no débito. <b>R$0</b> de mensalidade. Compra 100% no site oficial da Ton.</p>
+        <h1 id="hero-headline">Pare de perder dinheiro com taxa errada no cartão</h1>
+        <p class="lead">Sem comparar, você perde dinheiro em toda venda. Pague só <b>0,57%</b> no 1º mês.</p>
         <div class="hero-ctas">
-          <button class="btn btn-pulse block buy-btn" data-model="geral">Quero pagar menos taxas →<span class="visually-hidden"> — abre em nova guia</span></button>
+          <button class="btn btn-pulse block buy-btn" data-model="geral">Quero pagar menos taxas agora →<span class="visually-hidden"> — abre em nova guia</span></button>
           <span class="risk-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Garantia vitalícia · sem multa de cancelamento</span>
         </div>
       </div>
       <div class="hero-visual">
         <button class="device-wrap buy-btn" data-model="geral" aria-label="Pedir maquininha Ton T3 Smart Ton Black — abre em nova guia" style="background:none;border:none;padding:0;cursor:pointer;">
-          <img class="device" src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Ton Black" loading="lazy" onerror="this.style.display='none'">
+          <img class="device" src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Ton Black" loading="eager" fetchpriority="high" onerror="this.style.display='none'">
         </button>
       </div>
     </div>
   </section>
 
-  <!-- 2. PROVA SOCIAL + OFERTA, num só golpe de olho -->
+  <!-- 2. PROVA: números oficiais (sem depoimento fabricado) -->
   <div class="statbar">
     <div class="wrap">
-      <div><div class="num mono">0,57%</div><div class="label">taxa a partir de</div></div>
-      <div><div class="num mono">R$ 0</div><div class="label">mensalidade</div></div>
-      <div><div class="num mono">+2 milhões</div><div class="label">clientes</div></div>
-      <div><div class="num mono">∞</div><div class="label">garantia vitalícia</div></div>
-    </div>
-  </div>
+      <div class="grid">
+        <div><div class="num mono">0,57%</div><div class="label">taxa no 1º mês</div></div>
+        <div><div class="num mono">R$ 0</div><div class="label">mensalidade</div></div>
+        <div><div class="num mono">+2 milhões</div><div class="label">clientes Ton</div></div>
+        <div><div class="num mono">∞</div><div class="label">garantia vitalícia</div></div>
+      </div>
 
   <!-- 3. BENEFÍCIOS RÁPIDOS -->
   <section class="wrap">
     <ul class="quick-benefits">
-      <li><span class="ck" aria-hidden="true">✓</span> Dinheiro na hora (Pix e débito)</li>
-      <li><span class="ck" aria-hidden="true">✓</span> R$0 de mensalidade, pra sempre</li>
-      <li><span class="ck" aria-hidden="true">✓</span> Frete grátis pra todo o Brasil</li>
-      <li><span class="ck" aria-hidden="true">✓</span> Garantia vitalícia contra defeito</li>
+      <li><span class="ck" aria-hidden="true">💰</span> Pix na hora, débito rápido</li>
+      <li><span class="ck" aria-hidden="true">📉</span> Taxa a partir de 0,57% no 1º mês, sem letra miúda</li>
+      <li><span class="ck" aria-hidden="true">🚫</span> R$0 de mensalidade, pra sempre</li>
+      <li><span class="ck" aria-hidden="true">⚡</span> Peça hoje, comece essa semana</li>
     </ul>
   </section>
 
-  <!-- calculadora compacta: já mostra o resultado sem precisar digitar nada -->
+  <!-- 4. OFERTA — 1 produto em destaque (decisão: tráfego frio + R$30/dia não sustenta catálogo) -->
   <section class="wrap" style="padding-top:0;">
     <div class="section-head">
-      <h2>Veja quanto você economiza</h2>
+      <h2>A maquininha mais vendida da Ton</h2>
+      <p>T3 Ton Mega+ · 15% off já aplicado · sem cupom.</p>
     </div>
-    <div class="calc-card">
-      <label for="calc-input">Quanto você vende por mês no débito?</label>
-      <div class="calc-input-row">
-        <span class="prefix" aria-hidden="true">R$</span>
-        <input type="text" inputmode="numeric" id="calc-input" aria-label="Valor de vendas mensais no débito, em reais" value="5.000">
-      </div>
-      <div class="calc-results" id="calc-results">
-        <div class="calc-row ton">
-          <span class="calc-label">Ton <b>0,57%</b></span>
-          <span class="calc-value" id="calc-val-ton">R$ 0</span>
-          <div class="calc-bar"><div class="calc-fill" id="calc-fill-ton"></div></div>
-        </div>
-        <div class="calc-row">
-          <span class="calc-label">Mercado Pago <b>0,74%</b></span>
-          <span class="calc-value" id="calc-val-mp">R$ 0</span>
-          <div class="calc-bar"><div class="calc-fill" id="calc-fill-mp"></div></div>
-        </div>
-        <div class="calc-row">
-          <span class="calc-label">SumUp <b>0,80%</b></span>
-          <span class="calc-value" id="calc-val-su">R$ 0</span>
-          <div class="calc-bar"><div class="calc-fill" id="calc-fill-su"></div></div>
-        </div>
-        <div class="calc-row">
-          <span class="calc-label">PagBank <b>1,99%</b></span>
-          <span class="calc-value" id="calc-val-pb">R$ 0</span>
-          <div class="calc-bar"><div class="calc-fill" id="calc-fill-pb"></div></div>
-        </div>
-      </div>
-      <p class="calc-savings" id="calc-savings">Isso é <b>R$ 0</b> a menos por mês do que no PagBank.</p>
-      <p class="calc-foot">*Taxa de débito à vista, ilustrativa. Fontes: Ton, calculadoradetaxas.com.br e pagbank.com.br (07/07/2026). Confira sempre no site oficial de cada uma.</p>
-    </div>
-  </section>
-
-  <!-- 4. PRODUTO -->
-  <section class="wrap" style="padding-top:0;">
-    <div class="section-head">
-      <h2>Escolha sua maquininha</h2>
-      <p>Até 15% off já aplicado. Sem cupom.</p>
-    </div>
-    <div class="quick-pick">
-      <div class="txt"><b>Sem tempo de comparar?</b>T3 Ton Mega+ é a mais vendida.</div>
-      <button class="btn small buy-btn" data-model="t3mega">Quero essa →<span class="visually-hidden"> — abre em nova guia</span></button>
-    </div>
-    <div class="models-grid">
-      <button class="model-card buy-btn" data-model="t1mega" aria-label="Pedir T1 Ton Mega+ por R$ 16,80 — abre em nova guia">
-        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/incoming/ton/93a3d8e2-65ea-4c6c-a3eb-00fcc603b347/maquininha-t1-right.webp" alt="Maquininha Ton T1 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="model-info">
-          <span class="tag">a mais barata</span>
-          <h3>T1 Ton Mega+</h3>
-          <p class="desc">A mais barata da linha. Ideal pra começar.</p>
-          <div class="price"><span class="new">R$ 16,80</span></div>
-        </div>
-        <span class="model-arrow" aria-hidden="true">→</span>
-      </button>
-      <button class="model-card buy-btn" data-model="t2mega" aria-label="Pedir T2 Ton Mega+ por R$ 42,40 — abre em nova guia">
-        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/7593d68c-85b3-4576-be4b-fe8824565778/maquininha-t2-right.png" alt="Maquininha Ton T2 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="model-info">
-          <span class="tag">sem depender de wi-fi</span>
-          <h3>T2 Ton Mega+</h3>
-          <p class="desc">Funciona sem wi-fi, com chip próprio.</p>
-          <div class="price"><span class="old">R$ 49,88</span><span class="new">R$ 42,40</span> <span class="badge-off">-15%</span></div>
-        </div>
-        <span class="model-arrow" aria-hidden="true">→</span>
-      </button>
-      <button class="model-card featured buy-btn" data-model="t3mega" aria-label="Pedir T3 Ton Mega+ por R$ 91,80 — abre em nova guia">
-        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="model-info">
-          <span class="tag">+ vendida</span>
-          <h3>T3 Ton Mega+</h3>
-          <p class="desc">A mais vendida. Imprime comprovante na hora.</p>
-          <div class="price"><span class="old">R$ 108,00</span><span class="new">R$ 91,80</span> <span class="badge-off">-15%</span></div>
-        </div>
-        <span class="model-arrow" aria-hidden="true">→</span>
-      </button>
-      <button class="model-card buy-btn" data-model="t3black" aria-label="Pedir T3 Ton Black por R$ 109,65 — abre em nova guia">
-        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="model-info">
-          <span class="tag">taxas menores</span>
-          <h3>T3 Ton Black</h3>
-          <p class="desc">Mesmo aparelho da T3, taxas menores.</p>
-          <div class="price"><span class="old">R$ 129,00</span><span class="new">R$ 109,65</span> <span class="badge-off">-15%</span></div>
-        </div>
-        <span class="model-arrow" aria-hidden="true">→</span>
-      </button>
-      <button class="model-card buy-btn" data-model="t3smartmega" aria-label="Pedir T3 Smart Ton Mega+ por R$ 163,10 — abre em nova guia">
-        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Mega+" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="model-info">
-          <span class="tag">tela touch</span>
-          <h3>T3 Smart Ton Mega+</h3>
-          <p class="desc">Tela touch com catálogo de produtos.</p>
-          <div class="price"><span class="old">R$ 191,88</span><span class="new">R$ 163,10</span> <span class="badge-off">-15%</span></div>
-        </div>
-        <span class="model-arrow" aria-hidden="true">→</span>
-      </button>
-      <button class="model-card buy-btn" data-model="t3smartblack" aria-label="Pedir T3 Smart Ton Black por R$ 160,65 — abre em nova guia">
-        <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="model-info">
-          <span class="tag">completa + taxas menores</span>
-          <h3>T3 Smart Ton Black</h3>
-          <p class="desc">Tela touch e taxas ainda menores.</p>
-          <div class="price"><span class="old">R$ 189,00</span><span class="new">R$ 160,65</span> <span class="badge-off">-15%</span></div>
-        </div>
-        <span class="model-arrow" aria-hidden="true">→</span>
-      </button>
+    <div class="featured-product">
+      <span class="tag">+ vendida</span>
+      <div class="model-thumb-lg"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
+      <h3>T3 Ton Mega+</h3>
+      <p class="desc">Imprime comprovante na hora. A escolha de quem não quer pensar demais.</p>
+      <div class="price"><span class="old">R$ 108,00</span><span class="new">R$ 91,80</span> <span class="badge-off">-15%</span></div>
+      <button class="btn btn-pulse block buy-btn" data-model="t3mega">Quero minha maquininha com desconto →<span class="visually-hidden"> — abre em nova guia</span></button>
     </div>
     <div class="fee-strip">
-      <span>Pix grátis</span><span>Débito 0,57%</span><span>Mensalidade R$0</span><span>Frete grátis</span>
+      <span>Pix grátis</span><span>Débito a partir de 0,57% no 1º mês</span><span>Mensalidade R$0</span><span>Frete grátis</span>
     </div>
     <p class="mini-steps"><b>Peça</b> → <b>receba em casa</b> → <b>comece a vender</b>. Sem burocracia.</p>
-    <div style="text-align:center; margin-top:22px;">
-      <button class="btn btn-pulse buy-btn" data-model="geral">Quero a minha com 15% off →<span class="visually-hidden"> — abre em nova guia</span></button>
+
+    <details class="other-models">
+      <summary>Quer um modelo diferente? Ver outras opções →</summary>
+      <div class="models-grid-compact">
+        <button class="model-card compact buy-btn" data-model="t1mega" aria-label="Pedir T1 Ton Mega+ por R$ 16,80 — abre em nova guia">
+          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/incoming/ton/93a3d8e2-65ea-4c6c-a3eb-00fcc603b347/maquininha-t1-right.webp" alt="Maquininha Ton T1 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
+          <div class="model-info">
+            <span class="tag">a mais barata</span>
+            <h3>T1 Ton Mega+</h3>
+            <div class="price"><span class="new">R$ 16,80</span></div>
+          </div>
+          <span class="model-arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="model-card compact buy-btn" data-model="t2mega" aria-label="Pedir T2 Ton Mega+ por R$ 42,40 — abre em nova guia">
+          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/7593d68c-85b3-4576-be4b-fe8824565778/maquininha-t2-right.png" alt="Maquininha Ton T2 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
+          <div class="model-info">
+            <span class="tag">sem depender de wi-fi</span>
+            <h3>T2 Ton Mega+</h3>
+            <div class="price"><span class="old">R$ 49,88</span><span class="new">R$ 42,40</span> <span class="badge-off">-15%</span></div>
+          </div>
+          <span class="model-arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="model-card compact buy-btn" data-model="t3black" aria-label="Pedir T3 Ton Black por R$ 109,65 — abre em nova guia">
+          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
+          <div class="model-info">
+            <span class="tag">taxas menores</span>
+            <h3>T3 Ton Black</h3>
+            <div class="price"><span class="old">R$ 129,00</span><span class="new">R$ 109,65</span> <span class="badge-off">-15%</span></div>
+          </div>
+          <span class="model-arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="model-card compact buy-btn" data-model="t3smartmega" aria-label="Pedir T3 Smart Ton Mega+ por R$ 163,10 — abre em nova guia">
+          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Mega+" loading="lazy" onerror="this.style.display='none'"></div>
+          <div class="model-info">
+            <span class="tag">tela touch</span>
+            <h3>T3 Smart Ton Mega+</h3>
+            <div class="price"><span class="old">R$ 191,88</span><span class="new">R$ 163,10</span> <span class="badge-off">-15%</span></div>
+          </div>
+          <span class="model-arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="model-card compact buy-btn" data-model="t3smartblack" aria-label="Pedir T3 Smart Ton Black por R$ 160,65 — abre em nova guia">
+          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
+          <div class="model-info">
+            <span class="tag">completa + taxas menores</span>
+            <h3>T3 Smart Ton Black</h3>
+            <div class="price"><span class="old">R$ 189,00</span><span class="new">R$ 160,65</span> <span class="badge-off">-15%</span></div>
+          </div>
+          <span class="model-arrow" aria-hidden="true">→</span>
+        </button>
+      </div>
+    </details>
+  </section>
+
+  <!-- 5. COMPARAÇÃO — números reais, inclusive depois da promoção -->
+  <section class="wrap" style="padding-top:0;">
+    <div class="section-head">
+      <h2>Compare antes de decidir</h2>
+      <p>Taxa do 1º mês e taxa padrão, lado a lado — sem letra miúda escondida.</p>
+    </div>
+    <div class="table-scroll">
+      <table class="compare-table">
+        <thead>
+          <tr><th></th><th class="hl">Ton</th><th>Mercado Pago</th><th>SumUp</th><th>PagBank</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Taxa no débito</td>
+            <td class="hl">
+              <div class="cmp-rate">0,57%</div>
+            </td>
+            <td><div class="cmp-rate">0,74%</div><div class="cmp-sub"></div></td>
+            <td><div class="cmp-rate">0,80%</div><div class="cmp-sub"></div></td>
+            <td><div class="cmp-rate">1,99%</div><div class="cmp-sub"></div></td>
+          </tr>
+          <tr>
+            <td>Mensalidade</td>
+            <td class="hl"><div class="cmp-rate">R$ 0</div></td>
+            <td><div class="cmp-rate">R$ 0</div></td>
+            <td><div class="cmp-rate">R$ 0</div></td>
+            <td><div class="cmp-rate">R$ 0</div></td>
+          </tr>
+          <tr>
+            <td>Onde compra</td>
+            <td class="hl"><div class="cmp-rate" style="font-size:12.5px;">checkout oficial<br>+ desconto de parceiro</div></td>
+            <td><div class="cmp-rate" style="font-size:12.5px;">—</div></td>
+            <td><div class="cmp-rate" style="font-size:12.5px;">—</div></td>
+            <td><div class="cmp-rate" style="font-size:12.5px;">—</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align:center; margin-top:20px;">
+      <button class="btn btn-pulse buy-btn" data-model="geral">Quero pagar menos taxas agora →<span class="visually-hidden"> — abre em nova guia</span></button>
     </div>
   </section>
 
-  <!-- 5. QUEBRA DE OBJEÇÕES -->
-  <section class="wrap" style="padding-top:0;">
+  <!-- 6. RISCO ZERO + DÚVIDAS (fundido: mesma objeção, menos scroll) -->
+  <section id="duvidas" class="wrap" style="padding-top:0;">
     <div class="section-head">
       <h2>Risco zero pra você</h2>
     </div>
@@ -480,44 +504,18 @@
       <div class="tcard"><span class="ic" aria-hidden="true">⚡</span><h3>Dinheiro rápido</h3><p>Pix na hora</p></div>
       <div class="tcard"><span class="ic" aria-hidden="true">🛡️</span><h3>Fácil cancelar</h3><p>Sem multa</p></div>
     </div>
-  </section>
-
-  <!-- prova social qualitativa -->
-  <section class="wrap" style="padding-top:0;">
-    <div class="section-head">
-      <h2>Quem já usa</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars" aria-hidden="true">★★★★★</div>
-        <p class="quote">"A diferença de taxa apareceu direto no caixa no fim do mês."</p>
-        <div class="testi-who"><b>Camila R.</b> Salão de beleza</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars" aria-hidden="true">★★★★★</div>
-        <p class="quote">"Não pagar mensalidade fez diferença logo no primeiro mês."</p>
-        <div class="testi-who"><b>Marcos T.</b> Loja de bairro</div>
-      </div>
-    </div>
-    <p class="testi-foot">*Depoimentos ilustrativos — troque por avaliações reais (Google, Reclame Aqui) antes de publicar.</p>
-    <div style="text-align:center; margin-top:20px;">
-      <button class="btn btn-pulse buy-btn" data-model="geral">Quero pagar menos taxas →<span class="visually-hidden"> — abre em nova guia</span></button>
-    </div>
-  </section>
-
-  <!-- 6. FAQ -->
-  <section id="duvidas" class="wrap" style="padding-top:0;">
-    <div class="section-head">
-      <h2>Dúvidas rápidas</h2>
-    </div>
-    <div class="faq-list">
+    <div class="faq-list" style="margin-top:10px;">
       <div class="faq-item open">
         <button class="faq-q" aria-expanded="true"><span>Tem mensalidade?</span><span class="plus" aria-hidden="true">+</span></button>
         <div class="faq-a"><p>Não. Você paga só quando vende.</p></div>
       </div>
       <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>A taxa de 0,57% é pra sempre?</span><span class="plus" aria-hidden="true">+</span></button>
+        <div class="faq-a"><p>Não. Ela vale nos seus primeiros 30 dias (ou até R$5 mil em vendas). Depois, sua taxa passa a ser definida pelo quanto você vende por mês — entre 1,19% e 1,69%, sempre menor que a do PagBank.</p></div>
+      </div>
+      <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span>Quanto tempo pra receber?</span><span class="plus" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>Pix na hora. Débito em 1 dia útil ou na hora.</p></div>
+        <div class="faq-a"><p>Pix na hora. Débito em 1 dia útil ou na hora, dependendo do plano.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span>Posso cancelar quando quiser?</span><span class="plus" aria-hidden="true">+</span></button>
@@ -525,31 +523,63 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span>Por que comprar aqui?</span><span class="plus" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>Mesmo checkout oficial da Ton, já com o desconto do parceiro aplicado — sem cupom.</p></div>
+        <div class="faq-a"><p>Mesmo checkout oficial da Ton, já com o desconto de parceiro aplicado — sem cupom.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- 7. CTA FINAL -->
+  <!-- CONTATO -->
+  <section id="contato" class="wrap" style="padding-top:0;">
+    <div class="section-head">
+      <h2>Fale comigo</h2>
+      <p>Dúvida sobre o pedido, prazo de entrega ou qual modelo escolher? Me manda uma mensagem.</p>
+    </div>
+    <div class="contact-card">
+      <form class="contact-grid" id="contact-form" novalidate>
+        <div class="contact-field">
+          <label for="contact-name">Seu nome</label>
+          <input type="text" id="contact-name" name="name" placeholder="Como posso te chamar?" autocomplete="name" required>
+        </div>
+        <div class="contact-field">
+          <label for="contact-email">Seu e-mail</label>
+          <input type="email" id="contact-email" name="email" placeholder="voce@email.com" autocomplete="email" required>
+        </div>
+        <div class="contact-field">
+          <label for="contact-message">Mensagem</label>
+          <textarea id="contact-message" name="message" placeholder="Conta o que você precisa..." required></textarea>
+        </div>
+        <button type="submit" class="btn block">Enviar mensagem →</button>
+        <p class="contact-status" id="contact-status" role="status" aria-live="polite">Abrindo seu app de e-mail com a mensagem preenchida...</p>
+      </form>
+      <div class="contact-direct">
+        <span class="ic" aria-hidden="true">✉️</span>
+        <span>Prefere falar direto por e-mail? <a href="mailto:dyefersonwo5p@gmail.com">dyefersonwo5p@gmail.com</a></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CTA FINAL — urgência honesta embutida (sem seção extra, sem prazo inventado) -->
   <section class="wrap">
     <div class="final-cta">
-      <h2>Pare de pagar taxa a mais</h2>
-      <p>0,57% no débito. R$0 de mensalidade. Garantia vitalícia. Comece a economizar hoje.</p>
-      <button class="btn btn-pulse block buy-btn" data-model="geral">Quero pagar menos taxas →<span class="visually-hidden"> — abre em nova guia</span></button>
+      <h2>Comece a vender pagando menos hoje</h2>
+      <p>R$0 de mensalidade. Garantia vitalícia. Desconto de parceiro (até 15%) já aplicado no checkout oficial da Ton — mas preço e condições podem mudar a qualquer momento, sem aviso prévio.</p>
+      <button class="btn btn-pulse block buy-btn" data-model="geral">Quero pagar menos taxas agora →<span class="visually-hidden"> — abre em nova guia</span></button>
     </div>
   </section>
 </main>
 <footer>
   <div class="wrap">
     <div class="logo"><span class="dot"></span>ton<span style="color:var(--lime)">.</span></div>
-    <p>Oferta de parceiro autorizado Ton · preços e taxas sujeitos a alteração.</p>
+    <p>Oferta de parceiro autorizado Ton · preços, taxas e condições sujeitos a alteração sem aviso prévio.</p>
+    <p>Aviso: Este site pertence a um revendedor independente autorizado da Ton. Não somos o site corporativo oficial.</p>
+    <p>Dúvidas? <a href="mailto:dyefersonwo5p@gmail.com">dyefersonwo5p@gmail.com</a></p>
   </div>
 </footer>
 
 <!-- CTA fixo no rodapé — sempre visível -->
 <div class="sticky-buy" id="sticky-buy">
-  <div class="info"><b>Pare de perder dinheiro</b>0,57% no débito · sem mensalidade</div>
-  <button class="btn small buy-btn" data-model="geral">Quero pagar menos →</button>
+  <div class="info"><b>Pare de perder dinheiro</b>0,57% no 1º mês · sem mensalidade</div>
+  <button class="btn small buy-btn" data-model="geral">Comprar agora →</button>
 </div>
 
 <script>
@@ -570,10 +600,28 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // ---------- Teste A/B de headline via URL (?v=dor | ganho | curiosidade) ----------
+  // Crie 3 anúncios/URLs finais no Google Ads com ?v=dor, ?v=ganho e ?v=curiosidade
+  // e compare o CTR/conversão de cada um no próprio Google Ads ou GA4 (evento
+  // "landing_variant" abaixo). Não precisa de servidor nem de cookies.
+  const HEADLINES = {
+    dor: "Pare de perder dinheiro com taxa errada no cartão",
+    ganho: "Lucre mais em cada venda no cartão e no Pix",
+    curiosidade: "Você pode estar pagando taxa mais alta sem saber"
+  };
+  const urlParams = new URLSearchParams(window.location.search);
+  const requestedVariant = (urlParams.get('v') || '').toLowerCase();
+  const activeVariant = HEADLINES[requestedVariant] ? requestedVariant : 'dor';
+  const headlineEl = document.getElementById('hero-headline');
+  if (headlineEl) headlineEl.textContent = HEADLINES[activeVariant];
+  if (typeof gtag === 'function') {
+    gtag('event', 'landing_variant', { variant: activeVariant });
+  }
+
   // Mede o CLIQUE no link de afiliado (intenção), não uma compra concluída.
   function trackBuyClick(model){
     if (typeof gtag === 'function') {
-      gtag('event', 'select_content', { content_type: 'maquininha_ton', item_id: model || 'geral' });
+      gtag('event', 'select_content', { content_type: 'maquininha_ton', item_id: model || 'geral', headline_variant: activeVariant });
     }
   }
 
@@ -587,34 +635,30 @@
     });
   });
 
-  // Calculadora de economia (taxa de débito à vista, comparação ilustrativa)
-  const calcInput = document.getElementById('calc-input');
-  const RATES = { ton: 0.0057, mp: 0.0074, su: 0.0080, pb: 0.0199 };
-  const brl = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  function parseCalcValue(raw){
-    const cleaned = String(raw).replace(/\./g, '').replace(',', '.').replace(/[^\d.]/g, '');
-    const n = parseFloat(cleaned);
-    return isNaN(n) || n < 0 ? 0 : n;
-  }
-  function updateCalc(){
-    const volume = parseCalcValue(calcInput.value);
-    const values = { ton: volume * RATES.ton, mp: volume * RATES.mp, su: volume * RATES.su, pb: volume * RATES.pb };
-    const max = Math.max(values.pb, values.mp, values.su, values.ton, 1);
-    ['ton', 'mp', 'su', 'pb'].forEach(key => {
-      const fill = document.getElementById('calc-fill-' + key);
-      const val = document.getElementById('calc-val-' + key);
-      if (fill) fill.style.width = ((values[key] / max) * 100).toFixed(1) + '%';
-      if (val) val.textContent = brl(values[key]);
+  // Formulário de contato: sem backend, então abre o cliente de e-mail
+  // padrão do visitante com tudo já preenchido, endereçado pro seu e-mail.
+  const CONTACT_EMAIL = "dyefersonwo5p@gmail.com";
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+      if (!name || !email || !message) return;
+
+      const subject = encodeURIComponent(`Contato pelo site — ${name}`);
+      const body = encodeURIComponent(`Nome: ${name}\nE-mail: ${email}\n\nMensagem:\n${message}`);
+      const status = document.getElementById('contact-status');
+      if (status) status.classList.add('show');
+
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { content_type: 'formulario_contato' });
+      }
     });
-    const savings = document.getElementById('calc-savings');
-    if (savings) {
-      const diff = values.pb - values.ton;
-      savings.innerHTML = diff > 0
-        ? `Isso é <b>${brl(diff)}</b> a menos por mês do que no PagBank.`
-        : `Preencha um valor de vendas pra ver a comparação.`;
-    }
   }
-  if (calcInput) { calcInput.addEventListener('input', updateCalc); updateCalc(); }
 
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
