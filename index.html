@@ -41,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://martech-web-cdn.stone.com.br">
 <link rel="preload" as="image" fetchpriority="high" href="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Baloo+2:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #0E2A26;
@@ -53,6 +53,12 @@
     --muted: #9FBDB6;
     --line: rgba(245,241,230,0.14);
     --radius: 18px;
+    --pcard-bg: #FFFFFF;
+    --pcard-ink: #17241F;
+    --pcard-muted: #6C7A75;
+    --pcard-green: #147A42;
+    --pcard-green-soft: #E3F5E8;
+    --pcard-border: #E7E6DF;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -193,76 +199,55 @@
   .contact-direct a{color:var(--lime); font-family:'IBM Plex Mono'; font-weight:600; word-break:break-all;}
   .contact-direct a:hover{text-decoration:underline;}
   .contact-note{font-size:11.5px; color:var(--muted); margin-top:12px;}
-  /* ---------- produto em destaque (1 oferta única) ---------- */
-  .featured-product{
-    background:var(--card); border:1px solid rgba(200,255,77,0.5); border-radius:var(--radius);
-    padding:24px 20px; text-align:center;
+  /* ---------- cards de produto — mesmo layout do site mobile oficial da Ton (card claro) ---------- */
+  .products-stack{display:flex; flex-direction:column; gap:20px;}
+  .pcard{
+    background:var(--pcard-bg); border:1px solid var(--pcard-border); border-radius:20px;
+    padding:22px 20px 18px; box-shadow:0 16px 34px -20px rgba(0,0,0,0.45);
   }
-  .featured-product .tag{font-family:'IBM Plex Mono'; font-size:12px; color:var(--lime); display:block; margin-bottom:10px;}
-  .featured-product .model-thumb-lg{
-    width:180px; height:180px; margin:0 auto 14px; border-radius:18px;
-    background:linear-gradient(150deg, #F5F1E6, #E7E1D2); display:flex; align-items:center; justify-content:center; overflow:hidden;
-  }
-  .featured-product .model-thumb-lg img{height:100%; width:100%; object-fit:contain; padding:14px;}
-  .featured-product h3{font-size:24px; margin-bottom:6px;}
-  .featured-product .desc{font-size:14.5px; color:var(--muted); margin-bottom:12px; line-height:1.4;}
-  .featured-product .price{display:flex; align-items:baseline; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
-  /* ---------- outros modelos (secundário, mas fácil de achar) ---------- */
-  .other-models{margin-top:26px;}
-  .other-models summary{
-    cursor:pointer; list-style:none; font-family:'Space Grotesk'; font-weight:700; font-size:16.5px;
-    color:var(--lime); background:rgba(200,255,77,0.1); border:1.5px solid rgba(200,255,77,0.5);
-    border-radius:100px; padding:16px 22px; display:flex; align-items:center; justify-content:center; gap:8px;
-    transition:background .15s ease, transform .15s ease, border-radius .15s ease;
-  }
-  .other-models summary:hover{background:rgba(200,255,77,0.18); transform:translateY(-1px);}
-  .other-models[open] summary{border-radius:18px 18px 0 0;}
-  .other-models summary::-webkit-details-marker{display:none;}
-  .other-models summary .arrow{transition:transform .2s ease; display:inline-block;}
-  .other-models[open] summary .arrow{transform:rotate(90deg);}
-  .models-grid-compact{display:flex; flex-direction:column; gap:14px; margin-top:14px;}
-  .model-card.compact{padding:16px; gap:16px;}
-  .model-card.compact .model-thumb{width:100px; height:100px; border-radius:16px;}
-  .model-card.compact .model-info .tag{font-size:12px; margin-bottom:2px;}
-  .model-card.compact .model-info h3{font-size:18px; margin-bottom:4px;}
-  .model-card.compact .model-info .new{font-size:18px;}
-  .model-card.compact .model-info .old{font-size:13.5px;}
-  .model-card.compact .model-arrow{font-size:17px;}
-  .models-grid{display:flex; flex-direction:column; gap:14px;}
-  .model-card{
-    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-    padding:16px; display:flex; gap:14px; align-items:center;
-    cursor:pointer; text-align:left; width:100%; font:inherit; color:inherit;
-    position:relative;
-  }
-  .model-card.featured{border-color:rgba(200,255,77,0.5);}
-  .model-thumb{
-    width:150px; height:150px; flex:none; border-radius:18px;
-    background:linear-gradient(150deg, #F5F1E6, #E7E1D2);
+  .pcard-media{
+    width:min(200px,58%); aspect-ratio:1/1; margin:0 auto 16px;
+    background:linear-gradient(150deg,#F2F1EA,#E6E3D7); border-radius:18px;
     display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
-  .model-thumb img{height:100%; width:100%; object-fit:contain; padding:10px;}
-  .model-info{flex:1; min-width:0;}
-  .model-info .tag{
-    font-family:'IBM Plex Mono'; font-size:12px; color:var(--lime); display:block; margin-bottom:3px;
+  .pcard-media img{width:100%; height:100%; object-fit:contain; padding:16px;}
+  .pcard-tag{
+    display:block; text-align:center; font-family:'IBM Plex Mono'; font-size:11.5px; font-weight:600;
+    color:var(--pcard-green); letter-spacing:.01em; margin-bottom:6px;
   }
-  .model-info h3{font-size:20px; margin-bottom:4px;}
-  .model-info .desc{font-size:14.5px; color:var(--muted); margin-bottom:7px; line-height:1.4;}
-  .model-info .price{display:flex; align-items:baseline; gap:7px; flex-wrap:wrap;}
-  .model-info .old{font-family:'IBM Plex Mono'; color:var(--muted); font-size:13.5px; text-decoration:line-through;}
-  .model-info .new{font-family:'IBM Plex Mono'; color:var(--lime); font-size:20px; font-weight:600;}
-  .badge-off{
-    font-family:'IBM Plex Mono'; font-size:11.5px; font-weight:700; color:#0E2A26;
-    background:var(--lime); padding:2px 8px; border-radius:100px;
+  .pcard-name{color:var(--pcard-ink); font-size:26px; text-align:center; margin-bottom:6px;}
+  .pcard-desc{color:var(--pcard-muted); font-size:14.5px; text-align:center; max-width:320px; margin:0 auto 16px; line-height:1.45;}
+  .pcard-badge{
+    display:block; text-align:center; font-family:'Baloo 2', system-ui, sans-serif; font-weight:700; font-size:15px;
+    color:var(--pcard-green); background:var(--pcard-green-soft); border-radius:10px;
+    padding:10px 12px; margin-bottom:18px;
   }
-  .model-arrow{flex:none; color:var(--lime); font-size:18px;}
-  .fee-strip{display:flex; flex-wrap:wrap; gap:8px; margin:20px 0;}
-  .fee-strip span{
-    font-size:12.5px; background:rgba(200,255,77,0.08); border:1px solid rgba(200,255,77,0.22);
-    padding:6px 12px; border-radius:100px; color:var(--paper);
+  .pcard-price-row{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:16px;}
+  .pcard-price-main{display:flex; flex-direction:column;}
+  .pcard-price-old{font-family:'Baloo 2', system-ui, sans-serif; font-weight:600; font-size:14px; color:var(--pcard-muted); text-decoration:line-through;}
+  .pcard-price-new{font-family:'Baloo 2', system-ui, sans-serif; font-weight:700; font-size:26px; color:var(--pcard-green); line-height:1.2;}
+  .pcard-price-note{font-size:13.5px; color:var(--pcard-ink);}
+  .pcard-installment{display:flex; align-items:baseline; gap:6px; white-space:nowrap;}
+  .pcard-installment-x{font-family:'Baloo 2', system-ui, sans-serif; font-weight:600; font-size:15px; color:var(--pcard-ink);}
+  .pcard-installment-value{font-family:'Baloo 2', system-ui, sans-serif; font-weight:700; font-size:32px; color:var(--pcard-green); line-height:1;}
+  .pcard-installment-value small{font-size:15px; font-weight:700;}
+  .pcard-installment-value sup{font-size:15px; font-weight:700; top:-0.9em;}
+  .pcard-shipping{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--pcard-ink); margin-bottom:16px;}
+  .pcard-shipping svg{width:19px; height:19px; color:var(--pcard-green); flex:none;}
+  .pcard .btn{color:#0E2A26;}
+  .pcard-features{list-style:none; margin-top:16px; border-top:1px solid var(--pcard-border);}
+  .pcard-features li{
+    display:flex; align-items:center; gap:12px; font-size:14px; color:var(--pcard-muted);
+    padding:13px 2px; border-bottom:1px solid var(--pcard-border);
   }
-  .mini-steps{font-size:13px; color:var(--muted); text-align:center; margin-top:18px;}
-  .mini-steps b{color:var(--paper);}
+  .pcard-features li:last-child{border-bottom:none;}
+  .pcard-features svg{width:22px; height:22px; color:var(--pcard-green); flex:none;}
+  @media (min-width:680px){
+    .products-stack{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; align-items:start;}
+  }
+  @media (min-width:1040px){
+    .products-stack{grid-template-columns:repeat(3,1fr);}
+  }
   /* ---------- comparação ---------- */
   .compare-trust{
     font-size:13.5px; color:var(--paper); background:rgba(200,255,77,0.08);
@@ -373,6 +358,8 @@
         <div><div class="num mono">+2 milhões</div><div class="label">clientes Ton</div></div>
         <div><div class="num mono">∞</div><div class="label">garantia vitalícia</div></div>
       </div>
+    </div>
+  </div>
 
   <!-- 3. BENEFÍCIOS RÁPIDOS -->
   <section class="wrap">
@@ -384,75 +371,198 @@
     </ul>
   </section>
 
-  <!-- 4. OFERTA — 1 produto em destaque (decisão: tráfego frio + R$30/dia não sustenta catálogo) -->
+  <!-- 4. OFERTA — todos os modelos, cada um em card completo (mesmo layout do site mobile oficial da Ton) -->
   <section class="wrap" style="padding-top:0;">
     <div class="section-head">
-      <h2>A maquininha mais vendida da Ton</h2>
-      <p>T3 Ton Mega+ · 15% off já aplicado · sem cupom.</p>
+      <h2>Escolha sua maquininha Ton</h2>
+      <p>Preço oficial da Ton + desconto de parceiro já aplicado, sem cupom.</p>
     </div>
-    <div class="featured-product">
-      <span class="tag">+ vendida</span>
-      <div class="model-thumb-lg"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
-      <h3>T3 Ton Mega+</h3>
-      <p class="desc">Imprime comprovante na hora. A escolha de quem não quer pensar demais.</p>
-      <div class="price"><span class="old">R$ 108,00</span><span class="new">R$ 91,80</span> <span class="badge-off">-15%</span></div>
-      <button class="btn btn-pulse block buy-btn" data-model="t3mega">Quero minha maquininha com desconto →<span class="visually-hidden"> — abre em nova guia</span></button>
-    </div>
-    <div class="fee-strip">
-      <span>Pix grátis</span><span>Débito a partir de 0,57% no 1º mês</span><span>Mensalidade R$0</span><span>Frete grátis</span>
-    </div>
-    <p class="mini-steps"><b>Peça</b> → <b>receba em casa</b> → <b>comece a vender</b>. Sem burocracia.</p>
+    <div class="products-stack">
 
-    <details class="other-models">
-      <summary>Quer um modelo diferente? Ver outras opções <span class="arrow" aria-hidden="true">→</span></summary>
-      <div class="models-grid-compact">
-        <button class="model-card compact buy-btn" data-model="t1mega" aria-label="Pedir T1 Ton Mega+ por R$ 16,80 — abre em nova guia">
-          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/incoming/ton/93a3d8e2-65ea-4c6c-a3eb-00fcc603b347/maquininha-t1-right.webp" alt="Maquininha Ton T1 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
-          <div class="model-info">
-            <span class="tag">a mais barata</span>
-            <h3>T1 Ton Mega+</h3>
-            <div class="price"><span class="new">R$ 16,80</span></div>
+      <!-- T1 Ton Mega+ -->
+      <article class="pcard">
+        <div class="pcard-media"><img src="https://martech-web-cdn.stone.com.br/incoming/ton/93a3d8e2-65ea-4c6c-a3eb-00fcc603b347/maquininha-t1-right.webp" alt="Maquininha Ton T1" loading="lazy" onerror="this.style.display='none'"></div>
+        <span class="pcard-tag">T1 Ton Mega+ · a mais barata</span>
+        <h3 class="pcard-name">T1</h3>
+        <p class="pcard-desc">A maquininha compacta que conecta com o seu celular</p>
+        <span class="pcard-badge">70% OFF</span>
+        <div class="pcard-price-row">
+          <div class="pcard-price-main">
+            <span class="pcard-price-old">R$ 56,57</span>
+            <span class="pcard-price-new">R$ 16,80</span>
+            <span class="pcard-price-note">à vista ou</span>
           </div>
-          <span class="model-arrow" aria-hidden="true">→</span>
-        </button>
-        <button class="model-card compact buy-btn" data-model="t2mega" aria-label="Pedir T2 Ton Mega+ por R$ 42,40 — abre em nova guia">
-          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/7593d68c-85b3-4576-be4b-fe8824565778/maquininha-t2-right.png" alt="Maquininha Ton T2 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
-          <div class="model-info">
-            <span class="tag">sem depender de wi-fi</span>
-            <h3>T2 Ton Mega+</h3>
-            <div class="price"><span class="old">R$ 49,88</span><span class="new">R$ 42,40</span> <span class="badge-off">-15%</span></div>
+          <div class="pcard-installment">
+            <span class="pcard-installment-x">12x</span>
+            <span class="pcard-installment-value"><small>R$</small>1<sup>,40</sup></span>
           </div>
-          <span class="model-arrow" aria-hidden="true">→</span>
-        </button>
-        <button class="model-card compact buy-btn" data-model="t3black" aria-label="Pedir T3 Ton Black por R$ 109,65 — abre em nova guia">
-          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
-          <div class="model-info">
-            <span class="tag">taxas menores</span>
-            <h3>T3 Ton Black</h3>
-            <div class="price"><span class="old">R$ 129,00</span><span class="new">R$ 109,65</span> <span class="badge-off">-15%</span></div>
+        </div>
+        <div class="pcard-shipping"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="7" width="13" height="9.5" rx="1.2"/><path d="M14 10h4l3.5 3v3.5H14z"/><circle cx="6" cy="19" r="1.7"/><circle cx="17.5" cy="19" r="1.7"/></svg> Frete Grátis para todo Brasil</div>
+        <button class="btn block buy-btn" data-model="t1mega" aria-label="Pedir T1 Ton Mega+ por R$ 16,80 — abre em nova guia">Pedir T1<span class="visually-hidden"> — abre em nova guia</span></button>
+        <ul class="pcard-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.2"/><path d="M11 18h2"/></svg> Precisa de celular com internet</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5.5 8.5a7.5 7.5 0 0 1 0 7"/><path d="M9.5 6a11.5 11.5 0 0 1 0 12"/><path d="M13.5 3.5a15 15 0 0 1 0 17"/></svg> Receba por aproximação (NFC)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg> Comprovante por SMS</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 20 6v6c0 5-3.4 8.2-8 9.5-4.6-1.3-8-4.5-8-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg> Garantia vitalícia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1.5" x2="12" y2="22.5"/><path d="M16.5 5H10a3.2 3.2 0 0 0 0 6.4h4a3.2 3.2 0 0 1 0 6.4H7"/></svg> Parcelamento em até 12x</li>
+        </ul>
+      </article>
+
+      <!-- T2 Ton Mega+ -->
+      <article class="pcard">
+        <div class="pcard-media"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/7593d68c-85b3-4576-be4b-fe8824565778/maquininha-t2-right.png" alt="Maquininha Ton T2" loading="lazy" onerror="this.style.display='none'"></div>
+        <span class="pcard-tag">T2 Ton Mega+ · sem depender de wi-fi</span>
+        <h3 class="pcard-name">T2</h3>
+        <p class="pcard-desc">A maquininha compacta que tá sempre com você</p>
+        <span class="pcard-badge">76% OFF</span>
+        <div class="pcard-price-row">
+          <div class="pcard-price-main">
+            <span class="pcard-price-old">R$ 176,00</span>
+            <span class="pcard-price-new">R$ 42,40</span>
+            <span class="pcard-price-note">à vista ou</span>
           </div>
-          <span class="model-arrow" aria-hidden="true">→</span>
-        </button>
-        <button class="model-card compact buy-btn" data-model="t3smartmega" aria-label="Pedir T3 Smart Ton Mega+ por R$ 163,10 — abre em nova guia">
-          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart Mega+" loading="lazy" onerror="this.style.display='none'"></div>
-          <div class="model-info">
-            <span class="tag">tela touch</span>
-            <h3>T3 Smart Ton Mega+</h3>
-            <div class="price"><span class="old">R$ 191,88</span><span class="new">R$ 163,10</span> <span class="badge-off">-15%</span></div>
+          <div class="pcard-installment">
+            <span class="pcard-installment-x">12x</span>
+            <span class="pcard-installment-value"><small>R$</small>3<sup>,53</sup></span>
           </div>
-          <span class="model-arrow" aria-hidden="true">→</span>
-        </button>
-        <button class="model-card compact buy-btn" data-model="t3smartblack" aria-label="Pedir T3 Smart Ton Black por R$ 160,65 — abre em nova guia">
-          <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
-          <div class="model-info">
-            <span class="tag">completa + taxas menores</span>
-            <h3>T3 Smart Ton Black</h3>
-            <div class="price"><span class="old">R$ 189,00</span><span class="new">R$ 160,65</span> <span class="badge-off">-15%</span></div>
+        </div>
+        <div class="pcard-shipping"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="7" width="13" height="9.5" rx="1.2"/><path d="M14 10h4l3.5 3v3.5H14z"/><circle cx="6" cy="19" r="1.7"/><circle cx="17.5" cy="19" r="1.7"/></svg> Frete Grátis para todo Brasil</div>
+        <button class="btn block buy-btn" data-model="t2mega" aria-label="Pedir T2 Ton Mega+ por R$ 42,40 — abre em nova guia">Pedir T2<span class="visually-hidden"> — abre em nova guia</span></button>
+        <ul class="pcard-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="9" height="10" rx="2"/><line x1="5.3" y1="10" x2="8.7" y2="10"/><line x1="5.3" y1="13.2" x2="8.7" y2="13.2"/><path d="M15.5 9.3a5 5 0 0 1 0 6.4"/><path d="M18.6 6.8a9 9 0 0 1 0 11.4"/></svg> Com Chip 3G e Wi-Fi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5.5 8.5a7.5 7.5 0 0 1 0 7"/><path d="M9.5 6a11.5 11.5 0 0 1 0 12"/><path d="M13.5 3.5a15 15 0 0 1 0 17"/></svg> Receba por aproximação (NFC)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg> Comprovante por SMS</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11" rx="3.2" transform="rotate(45 12 12)"/></svg> Aceite Pix na Maquininha</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 20 6v6c0 5-3.4 8.2-8 9.5-4.6-1.3-8-4.5-8-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg> Garantia vitalícia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1.5" x2="12" y2="22.5"/><path d="M16.5 5H10a3.2 3.2 0 0 0 0 6.4h4a3.2 3.2 0 0 1 0 6.4H7"/></svg> Parcelamento em até 12x</li>
+        </ul>
+      </article>
+
+      <!-- T3 Ton Mega+ -->
+      <article class="pcard">
+        <div class="pcard-media"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3" loading="lazy" onerror="this.style.display='none'"></div>
+        <span class="pcard-tag">T3 Ton Mega+ · a mais vendida</span>
+        <h3 class="pcard-name">T3</h3>
+        <p class="pcard-desc">A maquininha com comprovante impresso</p>
+        <span class="pcard-badge">77% OFF</span>
+        <div class="pcard-price-row">
+          <div class="pcard-price-main">
+            <span class="pcard-price-old">R$ 391,92</span>
+            <span class="pcard-price-new">R$ 91,80</span>
+            <span class="pcard-price-note">à vista ou</span>
           </div>
-          <span class="model-arrow" aria-hidden="true">→</span>
-        </button>
-      </div>
-    </details>
+          <div class="pcard-installment">
+            <span class="pcard-installment-x">12x</span>
+            <span class="pcard-installment-value"><small>R$</small>7<sup>,65</sup></span>
+          </div>
+        </div>
+        <div class="pcard-shipping"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="7" width="13" height="9.5" rx="1.2"/><path d="M14 10h4l3.5 3v3.5H14z"/><circle cx="6" cy="19" r="1.7"/><circle cx="17.5" cy="19" r="1.7"/></svg> Frete Grátis para todo Brasil</div>
+        <button class="btn btn-pulse block buy-btn" data-model="t3mega" aria-label="Pedir T3 Ton Mega+ por R$ 91,80 — abre em nova guia">Pedir T3<span class="visually-hidden"> — abre em nova guia</span></button>
+        <ul class="pcard-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="9" height="10" rx="2"/><line x1="5.3" y1="10" x2="8.7" y2="10"/><line x1="5.3" y1="13.2" x2="8.7" y2="13.2"/><path d="M15.5 9.3a5 5 0 0 1 0 6.4"/><path d="M18.6 6.8a9 9 0 0 1 0 11.4"/></svg> Com Chip 3G e Wi-Fi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5.5 8.5a7.5 7.5 0 0 1 0 7"/><path d="M9.5 6a11.5 11.5 0 0 1 0 12"/><path d="M13.5 3.5a15 15 0 0 1 0 17"/></svg> Receba por aproximação (NFC)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12v19l-2.5-1.6L13 21l-2.5-1.6L8 21l-2-1.6z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg> Comprovante impresso ou SMS</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11" rx="3.2" transform="rotate(45 12 12)"/></svg> Aceite Pix na Maquininha</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 20 6v6c0 5-3.4 8.2-8 9.5-4.6-1.3-8-4.5-8-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg> Garantia vitalícia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1.5" x2="12" y2="22.5"/><path d="M16.5 5H10a3.2 3.2 0 0 0 0 6.4h4a3.2 3.2 0 0 1 0 6.4H7"/></svg> Parcelamento em até 21x</li>
+        </ul>
+      </article>
+
+      <!-- T3 Ton Black -->
+      <article class="pcard">
+        <div class="pcard-media"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/4dcf89f3-d51d-49d4-a82f-20fc91abf48a/maquininha-t3-right.webp" alt="Maquininha Ton T3 (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
+        <span class="pcard-tag">T3 Ton Black · taxas menores</span>
+        <h3 class="pcard-name">T3 Black</h3>
+        <p class="pcard-desc">A mesma T3, com taxas ainda menores no cartão</p>
+        <span class="pcard-badge">15% OFF</span>
+        <div class="pcard-price-row">
+          <div class="pcard-price-main">
+            <span class="pcard-price-old">R$ 129,00</span>
+            <span class="pcard-price-new">R$ 109,65</span>
+            <span class="pcard-price-note">à vista ou</span>
+          </div>
+          <div class="pcard-installment">
+            <span class="pcard-installment-x">12x</span>
+            <span class="pcard-installment-value"><small>R$</small>9<sup>,14</sup></span>
+          </div>
+        </div>
+        <div class="pcard-shipping"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="7" width="13" height="9.5" rx="1.2"/><path d="M14 10h4l3.5 3v3.5H14z"/><circle cx="6" cy="19" r="1.7"/><circle cx="17.5" cy="19" r="1.7"/></svg> Frete Grátis para todo Brasil</div>
+        <button class="btn block buy-btn" data-model="t3black" aria-label="Pedir T3 Ton Black por R$ 109,65 — abre em nova guia">Pedir T3 Black<span class="visually-hidden"> — abre em nova guia</span></button>
+        <ul class="pcard-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="9" height="10" rx="2"/><line x1="5.3" y1="10" x2="8.7" y2="10"/><line x1="5.3" y1="13.2" x2="8.7" y2="13.2"/><path d="M15.5 9.3a5 5 0 0 1 0 6.4"/><path d="M18.6 6.8a9 9 0 0 1 0 11.4"/></svg> Com Chip 3G e Wi-Fi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5.5 8.5a7.5 7.5 0 0 1 0 7"/><path d="M9.5 6a11.5 11.5 0 0 1 0 12"/><path d="M13.5 3.5a15 15 0 0 1 0 17"/></svg> Receba por aproximação (NFC)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12v19l-2.5-1.6L13 21l-2.5-1.6L8 21l-2-1.6z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg> Comprovante impresso ou SMS</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11" rx="3.2" transform="rotate(45 12 12)"/></svg> Aceite Pix na Maquininha</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 20 6v6c0 5-3.4 8.2-8 9.5-4.6-1.3-8-4.5-8-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg> Garantia vitalícia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1.5" x2="12" y2="22.5"/><path d="M16.5 5H10a3.2 3.2 0 0 0 0 6.4h4a3.2 3.2 0 0 1 0 6.4H7"/></svg> Parcelamento em até 21x</li>
+        </ul>
+      </article>
+
+      <!-- T3 Smart Ton Mega+ -->
+      <article class="pcard">
+        <div class="pcard-media"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart" loading="lazy" onerror="this.style.display='none'"></div>
+        <span class="pcard-tag">T3 Smart Ton Mega+ · tela touch</span>
+        <h3 class="pcard-name">T3 Smart</h3>
+        <p class="pcard-desc">A maquininha Android, mais rápida e com melhor bateria</p>
+        <span class="pcard-badge">76% OFF</span>
+        <div class="pcard-price-row">
+          <div class="pcard-price-main">
+            <span class="pcard-price-old">R$ 671,43</span>
+            <span class="pcard-price-new">R$ 163,10</span>
+            <span class="pcard-price-note">à vista ou</span>
+          </div>
+          <div class="pcard-installment">
+            <span class="pcard-installment-x">12x</span>
+            <span class="pcard-installment-value"><small>R$</small>13<sup>,59</sup></span>
+          </div>
+        </div>
+        <div class="pcard-shipping"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="7" width="13" height="9.5" rx="1.2"/><path d="M14 10h4l3.5 3v3.5H14z"/><circle cx="6" cy="19" r="1.7"/><circle cx="17.5" cy="19" r="1.7"/></svg> Frete Grátis para todo Brasil</div>
+        <button class="btn block buy-btn" data-model="t3smartmega" aria-label="Pedir T3 Smart Ton Mega+ por R$ 163,10 — abre em nova guia">Pedir T3 Smart<span class="visually-hidden"> — abre em nova guia</span></button>
+        <ul class="pcard-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="9" height="10" rx="2"/><line x1="5.3" y1="10" x2="8.7" y2="10"/><line x1="5.3" y1="13.2" x2="8.7" y2="13.2"/><path d="M15.5 9.3a5 5 0 0 1 0 6.4"/><path d="M18.6 6.8a9 9 0 0 1 0 11.4"/></svg> Com Chip 4G e Wi-Fi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5.5 8.5a7.5 7.5 0 0 1 0 7"/><path d="M9.5 6a11.5 11.5 0 0 1 0 12"/><path d="M13.5 3.5a15 15 0 0 1 0 17"/></svg> Receba por aproximação (NFC)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12v19l-2.5-1.6L13 21l-2.5-1.6L8 21l-2-1.6z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg> Comprovante impresso ou SMS</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11" rx="3.2" transform="rotate(45 12 12)"/></svg> Aceite Pix na Maquininha</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="7" width="18" height="10" rx="2"/><line x1="22.5" y1="10.2" x2="22.5" y2="13.8"/><line x1="5.5" y1="10" x2="5.5" y2="14"/><line x1="9" y1="10" x2="9" y2="14"/></svg> Bateria de longa duração</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10.5V21H4.2a1 1 0 0 1-1-1v-8.5a1 1 0 0 1 1-1z"/><path d="M9 21h8.2a2 2 0 0 0 2-1.7l1.2-6.3a2 2 0 0 0-2-2.3h-4.6l.9-4A1.4 1.4 0 0 0 13.3 5L9 10.5z"/></svg> Sistema Android com visor touchscreen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 20 6v6c0 5-3.4 8.2-8 9.5-4.6-1.3-8-4.5-8-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg> Garantia vitalícia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1.5" x2="12" y2="22.5"/><path d="M16.5 5H10a3.2 3.2 0 0 0 0 6.4h4a3.2 3.2 0 0 1 0 6.4H7"/></svg> Parcelamento em até 21x</li>
+        </ul>
+      </article>
+
+      <!-- T3 Smart Ton Black -->
+      <article class="pcard">
+        <div class="pcard-media"><img src="https://martech-web-cdn.stone.com.br/optimized/ton/d109918b-0c7e-4bf0-b016-e2202146e6de/maquininha-t3-smart-right.webp" alt="Maquininha Ton T3 Smart (plano Ton Black)" loading="lazy" onerror="this.style.display='none'"></div>
+        <span class="pcard-tag">T3 Smart Ton Black · completa + taxas menores</span>
+        <h3 class="pcard-name">T3 Smart Black</h3>
+        <p class="pcard-desc">T3 Smart completa, com taxas ainda menores no cartão</p>
+        <span class="pcard-badge">15% OFF</span>
+        <div class="pcard-price-row">
+          <div class="pcard-price-main">
+            <span class="pcard-price-old">R$ 189,00</span>
+            <span class="pcard-price-new">R$ 160,65</span>
+            <span class="pcard-price-note">à vista ou</span>
+          </div>
+          <div class="pcard-installment">
+            <span class="pcard-installment-x">12x</span>
+            <span class="pcard-installment-value"><small>R$</small>13<sup>,39</sup></span>
+          </div>
+        </div>
+        <div class="pcard-shipping"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="7" width="13" height="9.5" rx="1.2"/><path d="M14 10h4l3.5 3v3.5H14z"/><circle cx="6" cy="19" r="1.7"/><circle cx="17.5" cy="19" r="1.7"/></svg> Frete Grátis para todo Brasil</div>
+        <button class="btn block buy-btn" data-model="t3smartblack" aria-label="Pedir T3 Smart Ton Black por R$ 160,65 — abre em nova guia">Pedir T3 Smart Black<span class="visually-hidden"> — abre em nova guia</span></button>
+        <ul class="pcard-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="9" height="10" rx="2"/><line x1="5.3" y1="10" x2="8.7" y2="10"/><line x1="5.3" y1="13.2" x2="8.7" y2="13.2"/><path d="M15.5 9.3a5 5 0 0 1 0 6.4"/><path d="M18.6 6.8a9 9 0 0 1 0 11.4"/></svg> Com Chip 4G e Wi-Fi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5.5 8.5a7.5 7.5 0 0 1 0 7"/><path d="M9.5 6a11.5 11.5 0 0 1 0 12"/><path d="M13.5 3.5a15 15 0 0 1 0 17"/></svg> Receba por aproximação (NFC)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12v19l-2.5-1.6L13 21l-2.5-1.6L8 21l-2-1.6z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg> Comprovante impresso ou SMS</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11" rx="3.2" transform="rotate(45 12 12)"/></svg> Aceite Pix na Maquininha</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="7" width="18" height="10" rx="2"/><line x1="22.5" y1="10.2" x2="22.5" y2="13.8"/><line x1="5.5" y1="10" x2="5.5" y2="14"/><line x1="9" y1="10" x2="9" y2="14"/></svg> Bateria de longa duração</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10.5V21H4.2a1 1 0 0 1-1-1v-8.5a1 1 0 0 1 1-1z"/><path d="M9 21h8.2a2 2 0 0 0 2-1.7l1.2-6.3a2 2 0 0 0-2-2.3h-4.6l.9-4A1.4 1.4 0 0 0 13.3 5L9 10.5z"/></svg> Sistema Android com visor touchscreen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 20 6v6c0 5-3.4 8.2-8 9.5-4.6-1.3-8-4.5-8-9.5V6z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg> Garantia vitalícia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1.5" x2="12" y2="22.5"/><path d="M16.5 5H10a3.2 3.2 0 0 0 0 6.4h4a3.2 3.2 0 0 1 0 6.4H7"/></svg> Parcelamento em até 21x</li>
+        </ul>
+      </article>
+
+    </div>
   </section>
 
   <!-- 5. COMPARAÇÃO — números reais, inclusive depois da promoção -->
@@ -574,9 +684,8 @@
 <footer>
   <div class="wrap">
     <div class="logo"><span class="dot"></span>ton<span style="color:var(--lime)">.</span></div>
-    <p>Oferta de parceiro autorizado Ton · preços, taxas e condições sujeitos a alteração sem aviso prévio.</p>
-    <p>Aviso: Este site pertence a um revendedor independente autorizado da Ton. Não somos o site corporativo oficial.</p>
-    <p>Dúvidas? <a href="mailto:dyefersonwo5p@gmail.com">dyefersonwo5p@gmail.com</a></p>
+    <p>Oferta de parceiro autorizado Ton · preços, taxas e condições sujeitos a alteração sem aviso prévio. Aviso: Este site pertence a um revendedor/afiliado independente autorizado da Ton. Não somos o site corporativo oficial da Ton ou da Stone Co.</p>
+    <p>Dyeferson Rodrigues · CPF: 137.879.196-78 · Endereço: Rua: João Lemos, nº 530, Bairro: Paulo VI, Cidade - MG, CEP: 31995-150 · Dúvidas? <a href="mailto:dyefersonwo5p@gmail.com">dyefersonwo5p@gmail.com</a></p>
     <p><a href="termos/politica.html">Política de Privacidade</a> · <a href="termos/termos.html">Termos de Uso</a></p>
   </div>
 </footer>
