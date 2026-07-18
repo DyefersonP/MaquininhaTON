@@ -207,22 +207,27 @@
   .featured-product h3{font-size:24px; margin-bottom:6px;}
   .featured-product .desc{font-size:14.5px; color:var(--muted); margin-bottom:12px; line-height:1.4;}
   .featured-product .price{display:flex; align-items:baseline; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
-  /* ---------- outros modelos (secundário, recolhido) ---------- */
-  .other-models{margin-top:22px;}
+  /* ---------- outros modelos (secundário, mas fácil de achar) ---------- */
+  .other-models{margin-top:26px;}
   .other-models summary{
-    cursor:pointer; list-style:none; font-family:'Space Grotesk'; font-weight:600; font-size:14px;
-    color:var(--muted); padding:12px 4px; display:flex; align-items:center; justify-content:center; gap:6px;
+    cursor:pointer; list-style:none; font-family:'Space Grotesk'; font-weight:700; font-size:16.5px;
+    color:var(--lime); background:rgba(200,255,77,0.1); border:1.5px solid rgba(200,255,77,0.5);
+    border-radius:100px; padding:16px 22px; display:flex; align-items:center; justify-content:center; gap:8px;
+    transition:background .15s ease, transform .15s ease, border-radius .15s ease;
   }
+  .other-models summary:hover{background:rgba(200,255,77,0.18); transform:translateY(-1px);}
+  .other-models[open] summary{border-radius:18px 18px 0 0;}
   .other-models summary::-webkit-details-marker{display:none;}
-  .other-models summary:hover, .other-models[open] summary{color:var(--lime);}
-  .models-grid-compact{display:flex; flex-direction:column; gap:10px; margin-top:10px;}
-  .model-card.compact{padding:10px 12px; gap:12px;}
-  .model-card.compact .model-thumb{width:60px; height:60px; border-radius:10px;}
-  .model-card.compact .model-info h3{font-size:14.5px; margin-bottom:2px;}
-  .model-card.compact .model-info .tag{font-size:10.5px; margin-bottom:1px;}
-  .model-card.compact .model-info .new{font-size:14.5px;}
-  .model-card.compact .model-info .old{font-size:11px;}
-  .model-card.compact .model-arrow{font-size:14px;}
+  .other-models summary .arrow{transition:transform .2s ease; display:inline-block;}
+  .other-models[open] summary .arrow{transform:rotate(90deg);}
+  .models-grid-compact{display:flex; flex-direction:column; gap:14px; margin-top:14px;}
+  .model-card.compact{padding:16px; gap:16px;}
+  .model-card.compact .model-thumb{width:100px; height:100px; border-radius:16px;}
+  .model-card.compact .model-info .tag{font-size:12px; margin-bottom:2px;}
+  .model-card.compact .model-info h3{font-size:18px; margin-bottom:4px;}
+  .model-card.compact .model-info .new{font-size:18px;}
+  .model-card.compact .model-info .old{font-size:13.5px;}
+  .model-card.compact .model-arrow{font-size:17px;}
   .models-grid{display:flex; flex-direction:column; gap:14px;}
   .model-card{
     background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
@@ -368,9 +373,6 @@
         <div><div class="num mono">+2 milhões</div><div class="label">clientes Ton</div></div>
         <div><div class="num mono">∞</div><div class="label">garantia vitalícia</div></div>
       </div>
-    </div>
-    <p class="stat-foot wrap">*0,57% no débito vale nos primeiros 30 dias (ou até R$5 mil em vendas). Depois, sua taxa fica entre 1,19% e 1,69% ao mês, conforme quanto você vende — sempre menor que a do PagBank.</p>
-  </div>
 
   <!-- 3. BENEFÍCIOS RÁPIDOS -->
   <section class="wrap">
@@ -402,7 +404,7 @@
     <p class="mini-steps"><b>Peça</b> → <b>receba em casa</b> → <b>comece a vender</b>. Sem burocracia.</p>
 
     <details class="other-models">
-      <summary>Quer um modelo diferente? Ver outras opções →</summary>
+      <summary>Quer um modelo diferente? Ver outras opções <span class="arrow" aria-hidden="true">→</span></summary>
       <div class="models-grid-compact">
         <button class="model-card compact buy-btn" data-model="t1mega" aria-label="Pedir T1 Ton Mega+ por R$ 16,80 — abre em nova guia">
           <div class="model-thumb"><img src="https://martech-web-cdn.stone.com.br/incoming/ton/93a3d8e2-65ea-4c6c-a3eb-00fcc603b347/maquininha-t1-right.webp" alt="Maquininha Ton T1 Mega+" loading="lazy" onerror="this.style.display='none'"></div>
@@ -459,7 +461,6 @@
       <h2>Compare antes de decidir</h2>
       <p>Taxa do 1º mês e taxa padrão, lado a lado — sem letra miúda escondida.</p>
     </div>
-    <p class="compare-trust"><b>Transparência:</b> depois do 1º mês, sua taxa muda pra tabela padrão. Mostramos os dois números, não só o mais bonito.</p>
     <div class="table-scroll">
       <table class="compare-table">
         <thead>
@@ -470,12 +471,10 @@
             <td>Taxa no débito</td>
             <td class="hl">
               <div class="cmp-rate">0,57%</div>
-              <div class="cmp-sub">no 1º mês</div>
-              <div class="cmp-sub2">depois: 1,19–1,69%*</div>
             </td>
-            <td><div class="cmp-rate">0,74%</div><div class="cmp-sub">ilustrativo*</div></td>
-            <td><div class="cmp-rate">0,80%</div><div class="cmp-sub">ilustrativo*</div></td>
-            <td><div class="cmp-rate">1,99%</div><div class="cmp-sub">ilustrativo*</div></td>
+            <td><div class="cmp-rate">0,74%</div><div class="cmp-sub"></div></td>
+            <td><div class="cmp-rate">0,80%</div><div class="cmp-sub"></div></td>
+            <td><div class="cmp-rate">1,99%</div><div class="cmp-sub"></div></td>
           </tr>
           <tr>
             <td>Mensalidade</td>
@@ -494,7 +493,6 @@
         </tbody>
       </table>
     </div>
-    <p class="compare-foot">*Taxa Ton depois do 1º mês varia de 1,19% a 1,69% conforme seu volume mensal de vendas — sempre menor que a do PagBank (fonte: blog.ton.com.br, jul/2026). Taxas de Mercado Pago, SumUp e PagBank são ilustrativas e podem mudar — confira sempre no site oficial de cada empresa antes de decidir. Nenhuma das quatro cobra mensalidade fixa hoje.</p>
     <div style="text-align:center; margin-top:20px;">
       <button class="btn btn-pulse buy-btn" data-model="geral">Quero pagar menos taxas agora →<span class="visually-hidden"> — abre em nova guia</span></button>
     </div>
@@ -517,8 +515,6 @@
         <div class="faq-a"><p>Não. Você paga só quando vende.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span>A taxa de 0,57% é pra sempre?</span><span class="plus" aria-hidden="true">+</span></button>
-        <div class="faq-a"><p>Não. Ela vale nos seus primeiros 30 dias (ou até R$5 mil em vendas). Depois, sua taxa passa a ser definida pelo quanto você vende por mês — entre 1,19% e 1,69%, sempre menor que a do PagBank.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span>Quanto tempo pra receber?</span><span class="plus" aria-hidden="true">+</span></button>
